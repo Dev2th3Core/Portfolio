@@ -1,7 +1,6 @@
 {
   "name": "portfolio",
   "private": true,
-  "homepage": "https://Rakshit4045.github.io/Portfolio",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
