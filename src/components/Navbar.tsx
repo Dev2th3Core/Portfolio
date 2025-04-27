@@ -106,7 +106,7 @@ function Navbar({ showSidebar, toggleDarkTheme, handleTogglePage }: NavbarProps)
                     </span>
                 </Tooltip>
                 <h4>
-                    {location.pathname.substring(11).length ? location.pathname.substring(11).toUpperCase() : 'HOME'}
+                    {location.pathname.substring(1).length ? location.pathname.substring(1).toUpperCase() : 'HOME'}
                 </h4>
                 <Tooltip title="Next" arrow>
                     <span>
