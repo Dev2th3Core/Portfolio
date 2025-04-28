@@ -35,7 +35,6 @@ html, body {
 .side-bar-container{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   border-right: 1px solid;
 }
 
@@ -89,7 +88,7 @@ html, body {
 
 .side-bar-footer{
   width: -webkit-fill-available;
-  margin: 16px 16px 0 16px;
+  margin: auto 16px 0 16px;
   white-space: nowrap;
 }
 

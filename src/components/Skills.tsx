@@ -31,7 +31,7 @@ export default function Skills() {
   return (
     <Box className="skills-container">
       <Typography variant='h5' className="skills-title">Skills</Typography>
-      <Box className="skills-section" sx={{ width: { sm: '100% !important' } }}>
+      <Box className="skills-section">
         {/* Frontend Skills */}
         <Box className="skills-section">
           <Marquee
