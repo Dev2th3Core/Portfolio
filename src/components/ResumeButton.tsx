@@ -48,7 +48,7 @@ const ResumeButton: React.FC<ResumeButtonProps> = ({
     position: isSmallScreen ? 'fixed' : 'static',
     bottom: isSmallScreen ? '20px' : 'auto',
     right: isSmallScreen ? '20px' : 'auto',
-    zIndex: 1000,
+    zIndex: 50,
     boxShadow: isSmallScreen ? '0 4px 12px rgba(0,0,0,0.15)' : 'none',
     '&:hover': {
       boxShadow: '0 6px 16px rgba(0,0,0,0.2)'

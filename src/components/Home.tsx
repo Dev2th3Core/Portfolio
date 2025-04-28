@@ -12,7 +12,7 @@ interface HomeProps {
 const Home = ({ showSidebar, toggleDarkTheme, handleTogglePage }: HomeProps) => {
 
     return(
-        <Box className={ showSidebar ? "home-mini" : "home-full"}>
+        <Box className={ showSidebar ? "home-mini" : "home-full"} sx={{ overflow: 'hidden' }}>
             <Navbar showSidebar={showSidebar} toggleDarkTheme={toggleDarkTheme} handleTogglePage={handleTogglePage} />
             <Outlet/>
         </Box>

@@ -471,7 +471,7 @@ const TechstackContent = () => {
         <Box sx={{ 
           display: 'flex', 
           alignItems: 'center', 
-          justifyContent: 'center',
+          justifyContent: 'space-between',
           gap: 2,
           mb: 2
         }}>
