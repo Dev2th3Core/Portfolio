@@ -1,4 +1,4 @@
-import { createTheme, CssBaseline, ThemeProvider, useMediaQuery, useTheme } from "@mui/material";
+import { Box, createTheme, CssBaseline, ThemeProvider, useMediaQuery, useTheme } from "@mui/material";
 import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Home from "../components/Home";
@@ -46,15 +46,17 @@ function Layout() {
       // },
     },
     typography: {
-        fontFamily: 'cursive'
+        fontFamily: 'Roboto, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji'
     }
   });
 
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Sidebar showSidebar={showSidebar} handleTogglePage={handleTogglePage}/>
-      <Home showSidebar={showSidebar} toggleDarkTheme={toggleDarkTheme} handleTogglePage={handleTogglePage} />
+      <Box sx={{ display: "flex", width: '100vw'}}>
+        <Sidebar showSidebar={showSidebar} handleTogglePage={handleTogglePage}/>
+        <Home showSidebar={showSidebar} toggleDarkTheme={toggleDarkTheme} handleTogglePage={handleTogglePage} />
+      </Box>
     </ThemeProvider>
   )
 }

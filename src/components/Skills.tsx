@@ -2,7 +2,7 @@ import Marquee from 'react-fast-marquee'
 import { SiReact, SiTypescript, SiJavascript, SiNodedotjs, SiExpress, SiMongodb, SiDotnet, SiDocker, SiJenkins, SiKubernetes, SiMysql, SiPostgresql, SiPython, SiGithubactions} from 'react-icons/si'
 import { FaJava } from "react-icons/fa"
 import { VscAzure } from "react-icons/vsc"
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 const FRONTEND_N_CICD_SKILLS = [
   { Icon: SiReact, name: "React" },
@@ -30,7 +30,7 @@ const BACKEND_DEVOPS_SKILLS = [
 export default function Skills() {
   return (
     <Box className="skills-container">
-      <h5 className="skills-title">Skills</h5>
+      <Typography variant='h5' className="skills-title">Skills</Typography>
       <Box className="skills-section">
         {/* Frontend Skills */}
         <Box className="skills-section">

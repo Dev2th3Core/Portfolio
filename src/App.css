@@ -20,8 +20,8 @@ html, body {
 #root {
   margin: 0;
   text-align: center;
-  font-family: cursive, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-  width: 100vw;
+  font-family: ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  /* width: 100vw; */
   display: flex;
 }
 
@@ -36,7 +36,6 @@ html, body {
 .side-bar-container{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   border-right: 1px solid;
 }
 
@@ -90,7 +89,7 @@ html, body {
 
 .side-bar-footer{
   width: -webkit-fill-available;
-  margin: 16px 16px 0 16px;
+  margin: auto 16px 0 16px;
   white-space: nowrap;
 }
 
