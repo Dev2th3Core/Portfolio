@@ -21,7 +21,6 @@ html, body {
   margin: 0;
   text-align: center;
   font-family: ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-  /* width: 100vw; */
   display: flex;
 }
 
@@ -36,20 +35,21 @@ html, body {
 .side-bar-container{
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   border-right: 1px solid;
 }
 
 .side-bar-container-mini{
   width: 0%;
   visibility: hidden;
-  height: 100vh;
+  height: 100%;
   transition: .5s ease;
   overflow: hidden;
 }
 
 .side-bar-container-full{
   width: 320px;
-  height: 100vh;
+  height: 100%;
   position: relative;
   z-index: 100;
   top: 0;
@@ -89,7 +89,7 @@ html, body {
 
 .side-bar-footer{
   width: -webkit-fill-available;
-  margin: auto 16px 0 16px;
+  margin: 16px 16px 0 16px;
   white-space: nowrap;
 }
 
@@ -126,7 +126,7 @@ html, body {
 @media screen and (max-width: 768px) {
   .side-bar-container-mini{
     width: 0%;
-    height: 100vh;
+    height: 100%;
     position: absolute;
     top: 0;
     z-index: 9;
@@ -135,7 +135,7 @@ html, body {
  
   .side-bar-container-full{
     width: 320px;
-    height: 100vh;
+    height: 100%;
     position: absolute;
     z-index: 100;
     top: 0;
@@ -162,15 +162,22 @@ html, body {
   margin: 1rem 0;
 }
 
-.home-mini .skills-section {
+/* .home-mini .skills-section {
   width: 68vw;
   transition: width 0.3s ease-in-out;
 }
 
-.home-full .skills-section {
-  width: 85vw;
-  transition: width 0.3s ease-in-out;
+@media screen and (max-width: 768px) {
+  .home-mini .skills-section {
+    width: 100%;
+    transition: width 0.3s ease-in-out;
+  } 
 }
+
+.home-full .skills-section {
+  width: 100%;
+  transition: width 0.3s ease-in-out;
+} */
 
 .skills-list {
   display: flex;
