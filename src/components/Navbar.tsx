@@ -1,5 +1,5 @@
 import Icon from "../assets/Rakshit_Icon.png"
-import { Box, IconButton, Link, Tooltip, useMediaQuery, useTheme } from "@mui/material";
+import { Box, IconButton, Link, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material";
 import MaterialUISwitch from "./Switch";
 import { ChromeReaderMode, ArrowBack, ArrowForward } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -105,9 +105,9 @@ function Navbar({ showSidebar, toggleDarkTheme, handleTogglePage }: NavbarProps)
                         </IconButton>
                     </span>
                 </Tooltip>
-                <h4>
+                <Typography variant="body2" fontWeight={700}>
                     {location.pathname.substring(1).length ? location.pathname.substring(1).toUpperCase() : 'HOME'}
-                </h4>
+                </Typography>
                 <Tooltip title="Next" arrow>
                     <span>
                         <IconButton 

@@ -154,7 +154,7 @@ const experiences: Experience[] = [
     link: "https://www.xoriant.com/",
     image: XoriantLogo,
     alt: "X",
-    role: "Associate Software Developer",
+    role: "Associate Software Engineer",
     duration: "Jun 2022 - Jul 2023",
     location: "Mumbai, India",
     description: [
@@ -250,8 +250,8 @@ const ExperienceContent = () => {
   };
 
   return (
-    <Box sx={{ maxWidth: 900, maxHeight: "80vh", overflowY: "scroll", margin: '0 auto', padding: { xs: 1, sm: 3} }}>
-      <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2, ml: 2 }}>
+    <Box sx={{ maxWidth: 900, maxHeight: "85vh", overflowY: "scroll", margin: '0 auto', padding: { xs: 1, sm: 3}, pb: '5rem !important' }}>
+      <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: 1, mb: 2, ml: 2 }}>
         <Work /> Work Experience
       </Typography>
       

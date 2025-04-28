@@ -103,7 +103,7 @@ const TechstackContent = () => {
     { 
       name: "React", 
       icon: SiReact, 
-      rating: 5,
+      rating: 4,
       experience: "3+ years",
       description: "Built multiple production-ready UIs, including internal tools and enterprise FHIR apps",
       category: 'frontend'
@@ -111,7 +111,7 @@ const TechstackContent = () => {
     { 
       name: "TypeScript", 
       icon: SiTypescript, 
-      rating: 5,
+      rating: 4,
       experience: "2.5+ years",
       description: "Used in large-scale frontend apps with strict type safety and reusable components",
       category: 'frontend'
@@ -119,7 +119,7 @@ const TechstackContent = () => {
     { 
       name: "Recoil", 
       icon: SiRecoil, 
-      rating: 4,
+      rating: 3,
       experience: "1+ year",
       description: "Used in a custom testing dashboard for managing global app state efficiently",
       category: 'frontend'
@@ -127,7 +127,7 @@ const TechstackContent = () => {
     { 
       name: "JavaScript", 
       icon: SiJavascript, 
-      rating: 5,
+      rating: 4,
       experience: "4+ years",
       description: "Implemented dynamic features and API integrations",
       category: 'frontend'
@@ -135,7 +135,7 @@ const TechstackContent = () => {
     { 
       name: "Material-UI", 
       icon: SiMui, 
-      rating: 4,
+      rating: 3,
       experience: "2+ years",
       description: "Built consistent and responsive UI components in enterprise projects",
       category: 'frontend'
@@ -153,7 +153,7 @@ const TechstackContent = () => {
     { 
       name: "C#", 
       icon: TbBrandCSharp, 
-      rating: 3,
+      rating: 4,
       experience: "2+ years",
       description: "Used in .NET-based services and console apps",
       category: 'backend'
@@ -169,7 +169,7 @@ const TechstackContent = () => {
     { 
       name: "Python", 
       icon: SiPython, 
-      rating: 4,
+      rating: 3,
       experience: "1+ year",
       description: "Developed a custom CLI testing framework with CQL and Spark integration",
       category: 'backend'
@@ -450,6 +450,7 @@ const TechstackContent = () => {
         <Typography 
           variant="h5" 
           sx={{ 
+            fontWeight: 'bold',
             WebkitBackgroundClip: 'text',
             mb: 1
           }}
@@ -519,9 +520,13 @@ const TechstackContent = () => {
           borderBottom: 1, 
           borderColor: 'divider',
           mb: 2,
+          overflowX: 'auto', // Enable horizontal scrolling
+          '& .MuiTabs-list': {
+            width: '50vw',
+            margin: '0 auto'
+          },
           '& .MuiTabs-indicator': {
-            backgroundColor: 'var(--primary-color)',
-            height: 3
+            height: 0
           }
         }}>
           <Tabs 
@@ -529,6 +534,8 @@ const TechstackContent = () => {
             onChange={handleTabChange} 
             centered
             sx={{
+              display: 'flex',
+              flexWrap: 'nowrap', // Prevent tabs from wrapping to the next line
               '& .MuiTab-root': {
                 fontWeight: 'bold',
                 transition: 'all 0.3s ease',
@@ -546,7 +553,8 @@ const TechstackContent = () => {
                 display: 'flex', 
                 flexDirection: 'row', 
                 gap: 1,
-                alignItems: 'center'
+                alignItems: 'center',
+                ml: 5
               }}
             />
             <Tab 

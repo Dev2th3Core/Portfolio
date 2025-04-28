@@ -72,6 +72,7 @@ const ProjectsContent = () => {
         variant="h5" 
         gutterBottom 
         sx={{ 
+          fontWeight: 'bold',
           display: 'flex', 
           alignItems: 'center', 
           gap: 1,
@@ -128,12 +129,12 @@ const ProjectsContent = () => {
               </Typography>
               <Box className="skills-container">
                 <Typography 
-                  variant="subtitle2" 
+                  variant="subtitle1" 
                   className="skills-title"
                   sx={{ 
                     fontWeight: 'bold', 
                     mb: 1,
-                    color: 'text.secondary'
+                    color: 'text.secondary',
                   }}
                 >
                   Technologies Used
