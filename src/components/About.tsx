@@ -8,7 +8,7 @@ import SocialLinks from "./SocialLinks";
 const AboutContent = () => {
 
   return (
-    <Box sx={{ maxWidth: 900, maxHeight: "80vh", overflowY: "scroll", overflowX: 'hidden', margin: '0 auto', padding: 2 }}>
+    <Box sx={{ maxWidth: 900, maxHeight: "80vh", overflowY: "scroll", overflowX: 'hidden', margin: '0 auto', padding: 2, pb: 4 }}>
       {/* <Paper elevation={2} sx={{ p: 4, borderRadius: 2 }}> */}
         {/* Personal Snapshot Section - Grid Layout */}
         <Box sx={{ 

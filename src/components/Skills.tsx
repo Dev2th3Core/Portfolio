@@ -2,7 +2,7 @@ import Marquee from 'react-fast-marquee'
 import { SiReact, SiTypescript, SiJavascript, SiNodedotjs, SiExpress, SiMongodb, SiDotnet, SiDocker, SiJenkins, SiKubernetes, SiMysql, SiPostgresql, SiPython, SiGithubactions} from 'react-icons/si'
 import { FaJava } from "react-icons/fa"
 import { VscAzure } from "react-icons/vsc"
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, useTheme } from '@mui/material'
 
 const FRONTEND_N_CICD_SKILLS = [
   { Icon: SiReact, name: "React" },
@@ -67,13 +67,25 @@ interface Skill {
 }
 
 const SkillsList = ({ skills }: { skills: Skill[] }) => {
+  const theme = useTheme();
+
   return (
     <div className="skills-list">
       {skills.map(({ Icon, name }, index) => (
         <div
           key={index}
           className="skill-item"
-          style={{ padding: '0.75rem 1.25rem '}}
+          style={{ 
+            border: `1px solid ${theme.palette.divider}`,
+            backgroundColor: theme.palette.action.hover,
+            color: theme.palette.text.primary,
+          }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.backgroundColor = theme.palette.background.paper)
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.backgroundColor = theme.palette.action.hover)
+          }
         >
           <Icon className="skill-icon" aria-label={name} />
           <span>{name}</span>

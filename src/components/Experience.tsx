@@ -11,11 +11,19 @@ import {
   SiRecoil,
   SiPython,
   SiApachespark,
-  SiOpenapiinitiative, 
+  SiOpenapiinitiative,
+  SiJavascript,
+  SiNodedotjs,
+  SiPostman,
+  SiMongodb,
+  SiMongoose,
+  SiPostgresql,
+  SiSequelize, 
 } from 'react-icons/si';
 import { Link } from "react-router-dom";
 import WCTLogo from "../assets/waferwire_logo.jpg";
-import XoriantLogo from "../assets/xoriatn_logo.jpg";
+import XoriantLogo from "../assets/xoriant_logo.jpg";
+import YIELogo from "../assets/yie_logo.jpg";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { AzureADB2C, AzureAPIForFHIR, VirtualNetworks, StorageAccounts, StaticApps, SQLServer, MultiFactorAuthentication, Templates } from "@threeveloper/azure-react-icons";
 import { FunctionApps } from "@threeveloper/azure-react-icons/dist/components/compute/10029-icon-service-Function-Apps";
@@ -187,6 +195,45 @@ const experiences: Experience[] = [
         technologies: [
           { name: "NUnit", icon: GrTestDesktop },
           { name: "MSTest", icon: GrTestDesktop  }
+        ]
+      }
+    ]
+  },
+  {
+    company: "Youth India E-School",
+    link: "https://www.youthindiaeschool.com/",
+    image: YIELogo,
+    alt: "Y",
+    role: "MERN Developer Intern",
+    duration: "Aug 2021 – Oct 2021",
+    location: "Remote, India",
+    description: [
+      "Designed schemas using Mongoose (MongoDB) and Sequelize (PostgreSQL) for efficient data modeling",
+      "Built REST APIs using Node.js + Express.js to support CRUD operations",
+      "Participated in Agile practices with daily scrums and iterative sprints"
+    ],
+    techStack: [
+      {
+        name: "Backend",
+        technologies: [
+          { name: "JavaScript", icon: SiJavascript },
+          { name: "Node.js", icon: SiNodedotjs },
+        ]
+      },
+      {
+        name: "Database & ORM",
+        technologies: [
+          { name: "MongoDB", icon: SiMongodb },
+          { name: "Mongoose", icon: SiMongoose },
+          { name: "PostgreSQL", icon: SiPostgresql },
+          { name: "Sequelize", icon: SiSequelize },
+        ]
+      },
+      {
+        name: "Testing",
+        technologies: [
+          { name: "Postman", icon: SiPostman },
+          { name: "Rest Client", icon: SiOpenapiinitiative }
         ]
       }
     ]
