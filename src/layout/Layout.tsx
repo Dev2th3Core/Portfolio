@@ -6,8 +6,12 @@ import Home from "../components/Home";
 function Layout() {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+  // Check if the user prefers dark mode using window.matchMedia
+  const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
   // state to manage the dark mode
-  const [toggleDarkMode, setToggleDarkMode] = useState(true);
+  const [toggleDarkMode, setToggleDarkMode] = useState(!prefersDarkMode);
 
   const [showSidebar, setShowSidebar] = useState(isSmallScreen ? false : true);
 
