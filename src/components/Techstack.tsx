@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Typography, Tabs, Tab, Paper, Rating, Tooltip, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import { Code, Speed, ArrowBack, ArrowForward, PrecisionManufacturing } from "@mui/icons-material";
 import AIAssistant from "./AIAssistant";
-import useTabLayout from "../hoc/useTabLayout";
+import useTabLayout from "../hooks/useTabLayout";
 import { 
   SiReact, SiTypescript, SiJavascript, SiNodedotjs, SiExpress, 
   SiMongodb, SiDotnet, SiDocker, SiKubernetes, SiMysql, 

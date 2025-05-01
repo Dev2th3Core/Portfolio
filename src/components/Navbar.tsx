@@ -17,6 +17,7 @@ function Navbar({ showSidebar, toggleDarkTheme, handleTogglePage }: NavbarProps)
     const navigate = useNavigate();
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const isDarkMode = theme.palette.mode === 'dark';
 
     const navigationSequence = [
         PathConstants.ABOUT,
@@ -124,7 +125,7 @@ function Navbar({ showSidebar, toggleDarkTheme, handleTogglePage }: NavbarProps)
                 </Tooltip>
             </Box>
             <Box className="home-btn">
-                <MaterialUISwitch className="switch" onClick={toggleDarkTheme} />
+                <MaterialUISwitch checked={isDarkMode ? true : false} className="switch" onClick={toggleDarkTheme} />
                 {!isSmallScreen && <ResumeButton />}
             </Box>
             {isSmallScreen && <ResumeButton />}

@@ -1,50 +1,87 @@
-# React + TypeScript + Vite
+# Personal Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive portfolio website built with React, TypeScript, and Material-UI. The site showcases my professional experience, projects, and technical skills with a clean, intuitive interface.
 
-Currently, two official plugins are available:
+## 🌟 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Responsive Design**: Seamlessly adapts to all screen sizes
+- **Dark/Light Mode**: Toggle between themes for comfortable viewing
+- **Interactive Navigation**: Smooth transitions between sections
+- **Tab-based Layout**: Organized content with dual-tab system
+- **Skills Showcase**: Dynamic display of technical skills with animated marquee
+- **Social Integration**: Direct links to professional profiles
+- **Resume Download**: Quick access to latest resume
 
-## Expanding the ESLint configuration
+## 🚀 Coming Soon: AI Integration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+I'm currently working on integrating an AI assistant to provide more dynamic and detailed information about my:
+- Professional Experience
+- Technical Projects
+- Skills & Expertise
+- Educational Background
 
-- Configure the top-level `parserOptions` property like this:
+The AI assistant will allow visitors to ask questions and receive detailed, contextual responses about my work history and capabilities.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🛠️ Built With
+
+- React 18
+- TypeScript
+- Material-UI v7
+- React Router v7
+- Vite
+- Google's Generative AI (Coming Soon)
+
+## 🔧 Local Development
+
+1. Clone the repository
+```bash
+git clone https://github.com/Rakshit4045/Portfolio.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+2. Install dependencies
+```bash
+npm install
 ```
+
+3. Start the development server
+```bash
+npm run dev
+```
+
+4. Build for production
+```bash
+npm run build
+```
+
+## 🌐 Deployment
+
+The site is deployed using GitHub Pages. To deploy:
+```bash
+npm run deploy
+```
+
+## 💻 Code Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── layout/         # Layout components
+├── routes/         # Route configurations
+├── pages/          # Page components
+├── assets/         # Static assets
+└── hooks/          # Custom React hooks
+```
+
+## 🔗 Live Demo
+
+Visit the live site at: [dev2th3core.site](https://dev2th3core.site)
+
+## 📝 License
+
+This project is open for contributions.
+
+## 👤 Contact
+
+- GitHub: [@Rakshit4045](https://github.com/Rakshit4045)
+- LinkedIn: [Rakshit Shinde](https://www.linkedin.com/in/rakshit-shinde/)
+- X: [@Dev2th3Core](https://x.com/Dev2th3Core)

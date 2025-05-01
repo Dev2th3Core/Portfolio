@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Box, Typography, Paper, Tooltip } from "@mui/material";
 import { Email, LocationOn, OutgoingMail } from "@mui/icons-material";
 import AIAssistant from "./AIAssistant";
-import useTabLayout from "../hoc/useTabLayout";
+import useTabLayout from "../hooks/useTabLayout";
 import SocialLinks from "./SocialLinks";
 
 const ContactContent = () => {
