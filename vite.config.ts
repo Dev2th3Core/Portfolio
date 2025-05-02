@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import sitemapPlugin from 'vite-plugin-sitemap';
 import path from 'path';
 import fs from 'fs-extra';
 
@@ -16,6 +17,12 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    sitemapPlugin({
+      hostname: 'https://dev2th3core.site',
+      dynamicRoutes: [
+        '/', '/experience', '/projects', '/techstack', '/contact'
+      ]
+    }),
     {
       name: 'copy-index-to-404',
       writeBundle() {
@@ -36,3 +43,4 @@ export default defineConfig({
     }
   ],
 })
+
