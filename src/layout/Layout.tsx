@@ -2,6 +2,7 @@ import { Box, createTheme, CssBaseline, ThemeProvider, useMediaQuery, useTheme }
 import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Home from "../components/Home";
+import JDAnalysisButton from "../components/JDAnalysis/JDAnalysisButton";
 
 function Layout() {
   const theme = useTheme();
@@ -16,16 +17,16 @@ function Layout() {
   const [showSidebar, setShowSidebar] = useState(isSmallScreen ? false : true);
 
   const handleTogglePage = () => {
-    if(showSidebar){
-        setShowSidebar(false);
-    }else{
-        setShowSidebar(true);
-    }
+    setShowSidebar(!showSidebar);// function to toggle the dark mode as true or false
+
   }
 
-  // function to toggle the dark mode as true or false
+// function to toggle the dark mode as true or false
   const toggleDarkTheme = () => {
     setToggleDarkMode(!toggleDarkMode);
+    // Update the data-theme attribute for CSS variables
+    document.documentElement.setAttribute('data-theme', toggleDarkMode ? 'dark' : 'light');// applying the primary and secondary theme colors
+
   };
 
   // applying the primary and secondary theme colors
@@ -50,7 +51,38 @@ function Layout() {
       // },
     },
     typography: {
-        fontFamily: 'Roboto, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji'
+      fontFamily: 'Roboto, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji'
+    },
+    components: {
+      MuiPaper: {
+        styleOverrides: {
+          root: {
+            backgroundImage: 'none'
+          }
+        }
+      },
+      MuiFab: {
+        styleOverrides: {
+          root: {
+            '&:hover': {
+              transform: 'scale(1.05)',
+              boxShadow: '0 8px 16px rgba(0,0,0,0.2)'
+            },
+            transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out'
+          }
+        }
+      },
+      MuiChip: {
+        styleOverrides: {
+          root: {
+            transition: 'all 0.2s ease-in-out',
+            '&:hover': {
+              transform: 'translateY(-2px)',
+              boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
+            }
+          }
+        }
+      }
     }
   });
 
@@ -60,6 +92,7 @@ function Layout() {
       <Box sx={{ display: "flex", width: '100vw'}}>
         <Sidebar showSidebar={showSidebar} handleTogglePage={handleTogglePage}/>
         <Home showSidebar={showSidebar} toggleDarkTheme={toggleDarkTheme} handleTogglePage={handleTogglePage} />
+        <JDAnalysisButton />
       </Box>
     </ThemeProvider>
   )

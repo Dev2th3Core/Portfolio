@@ -30,15 +30,15 @@ const ContactContent = () => {
   return (
     <Box sx={{ 
       maxWidth: 900,
-      maxHeight: '80vh',
-      overflowY: 'scroll', 
+      maxHeight: '70vh',
+      overflowY: 'auto', 
       margin: '0 auto', 
       py: 3,
       px: { xs: 1, sm: 3},
       background: 'linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
       borderRadius: 3,
       backdropFilter: 'blur(10px)',
-      border: '1px solid rgba(255,255,255,0.1)'
+      border: '1px solid rgba(255,255,255,0.1)',
     }}>
       <Box sx={{ textAlign: 'center', mb: 6 }}>
         <Typography 

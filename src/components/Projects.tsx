@@ -67,7 +67,7 @@ const ProjectsContent = () => {
   ];
 
   return (
-    <Box sx={{ maxWidth: 1000, maxHeight: '80vh', overflow: 'scroll', margin: '0 auto', p: { xs: 2, sm: 3}, pb: {xs: '5rem' } }}>
+    <Box sx={{ maxWidth: 1000, maxHeight: '80vh', overflow: 'scroll', margin: '0 auto', p: { xs: 2, sm: 3}, pb: {xs: '8rem' } }}>
       <Typography 
         variant="h5" 
         gutterBottom 
