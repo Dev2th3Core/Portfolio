@@ -14,11 +14,11 @@ import {
 } from '@mui/material';
 import {
   CheckCircle,
-  Warning,
   Error,
   TrendingUp,
   WorkHistory,
-  LocationOn
+  LocationOn,
+  Cancel
 } from '@mui/icons-material';
 import { JDAnalysisResult, SkillMatch } from '../../types/ai';
 
@@ -39,8 +39,8 @@ const JDAnalysisResults: React.FC<JDAnalysisResultsProps> = ({ result }) => {
 
   const renderSkillMatch = (match: SkillMatch) => {
     const icon = match.match === 'exact' ? <CheckCircle color="success" /> :
-                match.match === 'similar' ? <Warning color="warning" /> :
-                <Error color="error" />;
+                match.match === 'similar' ? <Error color="warning" /> :
+                <Cancel color="error" />;
     
     return (
       <Tooltip 
@@ -79,7 +79,7 @@ const JDAnalysisResults: React.FC<JDAnalysisResultsProps> = ({ result }) => {
             <Grid item>
               <Box sx={{ textAlign: 'center' }}>
                 <Typography variant="h3" gutterBottom>
-                  {result.overallFit.score}%
+                  {result.overallFit.score ?? 45}%
                 </Typography>
                 <Typography variant="subtitle1" color="text.secondary">
                   Overall Match
@@ -109,7 +109,7 @@ const JDAnalysisResults: React.FC<JDAnalysisResultsProps> = ({ result }) => {
 
       <Grid container spacing={3}>
         {/* Skills Analysis */}
-        <Grid item>
+        <Grid item sx={{ width: '100%' }}>
           <Paper elevation={2} sx={{ p: 2, height: '100%' }}>
             <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
               <WorkHistory /> Skills Match
@@ -140,34 +140,40 @@ const JDAnalysisResults: React.FC<JDAnalysisResultsProps> = ({ result }) => {
                 Experience Analysis
               </Typography>
               <Typography variant="body1">
-                Required: {result.experienceAnalysis.requiredYears} years
+                Required: {result.experienceAnalysis.requiredYears}
               </Typography>
               <Typography variant="body1" gutterBottom>
-                Current: {result.experienceAnalysis.currentYears} years
+                Current: {result.experienceAnalysis.currentYears}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 {result.experienceAnalysis.analysis}
               </Typography>
             </Box>
 
-            <Divider sx={{ my: 2 }} />
+            {
+              result.workPreferences.length > 0 &&
+              <>
+              <Divider sx={{ my: 2 }} />
+              
 
-            <Box>
-              <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <LocationOn /> Work Preferences
-              </Typography>
-              {result.workPreferences.map((pref, index) => (
-                <Alert 
-                  key={index}
-                  severity={pref.matches ? 'success' : 'warning'}
-                  sx={{ mb: 1 }}
-                >
-                  <Typography variant="body2">
-                    {pref.requirement}: {pref.comment}
-                  </Typography>
-                </Alert>
-              ))}
-            </Box>
+              <Box>
+                <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <LocationOn /> Work Preferences
+                </Typography>
+                {result.workPreferences.map((pref, index) => (
+                  <Alert 
+                    key={index}
+                    severity={pref.matches ? 'success' : 'warning'}
+                    sx={{ mb: 1 }}
+                  >
+                    <Typography variant="body2">
+                      {pref.requirement}: {pref.comment}
+                    </Typography>
+                  </Alert>
+                ))}
+              </Box>
+              </>
+            }
           </Paper>
         </Grid>
       </Grid>

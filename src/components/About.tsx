@@ -75,7 +75,7 @@ const AboutContent = () => {
           mb: 4 
         }}>
           {/* Years of Experience */}
-          <Paper elevation={4} sx={{ p: 2, textAlign: 'center' }}>
+          <Paper elevation={4} sx={{ p: 2, textAlign: 'center', backgroundImage: 'var(--Paper-overlay)' }}>
             <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 1 }}>
               2+
             </Typography>
@@ -85,7 +85,7 @@ const AboutContent = () => {
           </Paper>
 
           {/* Current Organization */}
-          <Paper elevation={4} sx={{ p: 2, textAlign: 'center' }}>
+          <Paper elevation={4} sx={{ p: 2, textAlign: 'center', backgroundImage: 'var(--Paper-overlay)' }}>
             <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 1 }}>
               WCT
             </Typography>

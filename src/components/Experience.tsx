@@ -309,6 +309,7 @@ const ExperienceContent = () => {
             expanded={expanded === index}
             onChange={handleChange(index)}
             sx={{
+              backgroundImage: 'var(--Paper-overlay)',
               backgroundColor: 'background.paper',
               '&:before': { display: 'none' },
               borderRadius: '8px !important',

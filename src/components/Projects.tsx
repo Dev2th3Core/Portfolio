@@ -103,6 +103,7 @@ const ProjectsContent = () => {
                 boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
               },
               borderRadius: 2,
+              backgroundImage: 'var(--Paper-overlay)',
               backgroundColor: 'background.paper',
               border: '1px solid',
               borderColor: 'divider'

@@ -15,10 +15,10 @@ import {
   Tooltip
 } from '@mui/material';
 import { Upload, Description, Close, AutoAwesome } from '@mui/icons-material';
-import { JDAnalysisService } from '../../services/ai/jdAnalysis';
 import { JDAnalysisResult } from '../../types/ai';
 import JDAnalysisResults from './JDAnalysisResults';
 import { useDropzone } from 'react-dropzone';
+import { analyzeJobDescription } from '../../services/api/jdAnalysisApi';
 import { pdfjsLib } from '../../utils/pdfjs-init';
 import mammoth from 'mammoth';
 
@@ -64,6 +64,7 @@ const JDAnalysisModal: React.FC<JDAnalysisModalProps> = ({ open, onClose }) => {
 
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobileScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
     setError(null);
@@ -135,11 +136,10 @@ const JDAnalysisModal: React.FC<JDAnalysisModalProps> = ({ open, onClose }) => {
     }
 
     setIsAnalyzing(true);
-    setError(null);
-
+    setError(null);    
     try {
-      const service = JDAnalysisService.getInstance();
-      const result = await service.analyzeJD(jdText, customPrompt);
+      const cleanText = jdText.replace(/[^\x09\x0A\x0D\x20-\x7E]/g, '');
+      const result = await analyzeJobDescription(cleanText, customPrompt);
       setAnalysisResult(result);
     } catch (err) {
       setError('Failed to analyze job description. Please try again.');
@@ -176,7 +176,11 @@ const JDAnalysisModal: React.FC<JDAnalysisModalProps> = ({ open, onClose }) => {
           bgcolor: 'background.paper',
           borderRadius: 4,
           boxShadow: theme.shadows[24],
-          p: 4,
+          py: 4,
+          px: {
+            xs: 2,
+            sm: 4
+          },
           overflow: 'auto',
           '&::-webkit-scrollbar': {
             width: '8px',
@@ -205,29 +209,30 @@ const JDAnalysisModal: React.FC<JDAnalysisModalProps> = ({ open, onClose }) => {
           >
             <Close />
           </IconButton>
+          
+          <Box sx={{ display: 'flex', alignItems: 'center', mb: 3, gap: 1 }}>
+            <AutoAwesome sx={{ 
+              color: 'primary.main',
+              animation: 'pulse 2s infinite',
+              '@keyframes pulse': {
+                '0%': { opacity: 1 },
+                '50%': { opacity: 0.5 },
+                '100%': { opacity: 1 },
+              }
+            }} />
+            <Typography variant="h5" component="h2" sx={{
+              background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              color: 'transparent',
+              fontWeight: 600,
+            }}>
+              AI Job Description Analyzer
+            </Typography>
+          </Box>
 
           {!analysisResult ? (
             <>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 3, gap: 1 }}>
-                <AutoAwesome sx={{ 
-                  color: 'primary.main',
-                  animation: 'pulse 2s infinite',
-                  '@keyframes pulse': {
-                    '0%': { opacity: 1 },
-                    '50%': { opacity: 0.5 },
-                    '100%': { opacity: 1 },
-                  }
-                }} />
-                <Typography variant="h5" component="h2" sx={{
-                  background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  color: 'transparent',
-                  fontWeight: 600,
-                }}>
-                  AI Job Description Analyzer
-                </Typography>
-              </Box>
               
               <Typography variant="body1" sx={{ mb: 3, color: 'text.secondary', textAlign: 'left' }}>
                 Are you a recruiter or hiring manager? Paste your job description here, and our AI will analyze how well my skills and experience align with your requirements. This tool helps you quickly assess my fit for your role by comparing the job requirements against my professional profile.
@@ -361,11 +366,22 @@ const JDAnalysisModal: React.FC<JDAnalysisModalProps> = ({ open, onClose }) => {
                   ) : (
                     <>
                       <Upload sx={{ display: 'block' ,fontSize: 40, color: 'primary.main', m: '0 auto' }} />
-                      <Typography variant="h6" gutterBottom textAlign={'center'}>
-                        {isDragActive ? 'Drop your file here' : 'Drag & drop your file here'}
-                      </Typography>
+                      {
+                        !isMobileScreen 
+                        &&
+                        (
+                        <>
+                          <Typography variant="h6" gutterBottom textAlign={'center'}>
+                            {isDragActive ? 'Drop your file here' : 'Drag & drop your file here'}
+                          </Typography>
+                          <Typography variant='body2' gutterBottom textAlign={'center'}>
+                            OR
+                          </Typography>
+                        </>
+                        )
+                      }
                       <Typography variant="body2" color="text.secondary" textAlign={'center'}>
-                        or click to select a file (Supported: TXT, PDF, DOC, DOCX)
+                        click to select a file (Supported: TXT, PDF, DOC, DOCX)
                       </Typography>
                     </>
                   )}
@@ -379,7 +395,7 @@ const JDAnalysisModal: React.FC<JDAnalysisModalProps> = ({ open, onClose }) => {
 
               <TextField
                 fullWidth
-                placeholder="Any specific aspects you want me to focus on? (Optional)"
+                placeholder="Additional Requirement (Optional)"
                 value={customPrompt}
                 onChange={(e) => setCustomPrompt(e.target.value)}
                 sx={{ mb: 3 }}

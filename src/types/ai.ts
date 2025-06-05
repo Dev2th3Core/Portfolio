@@ -1,10 +1,3 @@
-export interface AIConfig {
-  apiKey: string;
-  modelName: string;
-  maxTokens: number;
-  temperature: number;
-}
-
 export interface SkillMatch {
   skill: string;
   match: 'exact' | 'similar' | 'missing';
@@ -41,11 +34,4 @@ export interface JDAnalysisResult {
     keyStrengths: string[];
     potentialConcerns?: string[];
   };
-}
-
-export interface ContextChunk {
-  content: string;
-  section: string;
-  priority: number;
-  tokens: number;
 }

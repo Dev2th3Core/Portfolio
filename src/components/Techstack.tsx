@@ -620,7 +620,7 @@ const TechstackContent = () => {
         display: 'grid', 
         py: 2,
         pb: {
-          xs: '8rem',
+          xs: '10rem',
           sm: '1rem'
         },
         maxHeight: {
