@@ -297,7 +297,7 @@ const ExperienceContent = () => {
   };
 
   return (
-    <Box sx={{ maxWidth: 900, maxHeight: "85vh", overflowY: "scroll", margin: '0 auto', padding: { xs: 1, sm: 3}, pb: '5rem !important' }}>
+    <Box sx={{ maxWidth: 900, maxHeight: "85vh", overflowY: "scroll", margin: '0 auto', padding: { xs: 1, sm: 3}, pb: '8rem !important' }}>
       <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: 1, mb: 2, ml: 2 }}>
         <Work /> Work Experience
       </Typography>
@@ -309,6 +309,7 @@ const ExperienceContent = () => {
             expanded={expanded === index}
             onChange={handleChange(index)}
             sx={{
+              backgroundImage: 'var(--Paper-overlay)',
               backgroundColor: 'background.paper',
               '&:before': { display: 'none' },
               borderRadius: '8px !important',

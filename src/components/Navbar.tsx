@@ -50,6 +50,7 @@ function Navbar({ showSidebar, toggleDarkTheme, handleTogglePage }: NavbarProps)
                     width: isSmallScreen ? "auto" : "11rem", 
                     padding: ".5rem", 
                     display: "flex", 
+                    alignItems: "flex-start",
                     visibility: showSidebar ? "hidden" : "visible" 
                 }} 
             >

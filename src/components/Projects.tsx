@@ -67,7 +67,7 @@ const ProjectsContent = () => {
   ];
 
   return (
-    <Box sx={{ maxWidth: 1000, maxHeight: '80vh', overflow: 'scroll', margin: '0 auto', p: { xs: 2, sm: 3}, pb: {xs: '5rem' } }}>
+    <Box sx={{ maxWidth: 1000, maxHeight: '80vh', overflow: 'scroll', margin: '0 auto', p: { xs: 2, sm: 3}, pb: {xs: '8rem' } }}>
       <Typography 
         variant="h5" 
         gutterBottom 
@@ -103,6 +103,7 @@ const ProjectsContent = () => {
                 boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
               },
               borderRadius: 2,
+              backgroundImage: 'var(--Paper-overlay)',
               backgroundColor: 'background.paper',
               border: '1px solid',
               borderColor: 'divider'

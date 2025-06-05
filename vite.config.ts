@@ -8,12 +8,24 @@ import fs from 'fs-extra';
 export default defineConfig({
   base: '/',
   build: {
-    // Your other build options...
     rollupOptions: {
       output: {
         // any custom output options here
+      },
+      external: ['**/__tests__/**'] // Exclude test files from build
+    },
+    outDir: 'dist'
+  },
+  optimizeDeps: {
+    include: ['pdfjs-dist']
+  },
+  resolve: {
+    alias: [
+      {
+        find: 'pdfjs-dist',
+        replacement: path.resolve(__dirname, 'node_modules/pdfjs-dist/legacy/build/pdf.js')
       }
-    }
+    ]
   },
   plugins: [
     react(),
