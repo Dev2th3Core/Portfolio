@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Card, CardContent, CardActions, IconButton } from "@mui/material";
 import { GitHub, Launch, Code } from "@mui/icons-material";
-import AIAssistant from "./AIAssistant";
+import AIAssistant from "./AIAssistantUI/AIAssistant";
 import useTabLayout from "../hooks/useTabLayout";
 import { 
   SiReact, SiTypescript,

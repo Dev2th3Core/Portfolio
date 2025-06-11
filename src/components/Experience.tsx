@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Typography, Stack, Accordion, AccordionSummary, AccordionDetails, Avatar, Tab } from "@mui/material";
-import AIAssistant from "./AIAssistant";
+import AIAssistant from "./AIAssistantUI/AIAssistant";
 import useTabLayout from "../hooks/useTabLayout";
 import { Work, ExpandMore, Cloud } from "@mui/icons-material";
 import { 

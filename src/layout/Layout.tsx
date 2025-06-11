@@ -29,6 +29,7 @@ function Layout() {
 
   };
 
+
   // applying the primary and secondary theme colors
   const darkTheme = createTheme({
     palette: {
