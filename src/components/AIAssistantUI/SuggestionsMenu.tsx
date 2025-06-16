@@ -58,7 +58,7 @@ const SuggestionsMenu: React.FC<SuggestionsMenuProps> = ({
                   fontSize: 16,
                   fontWeight: 500,
                   px: 1,
-                  py: 1,
+                  py: .5,
                   borderRadius: 2,
                   width: 'fit-content',
                   maxWidth: '80vw',
@@ -73,7 +73,6 @@ const SuggestionsMenu: React.FC<SuggestionsMenuProps> = ({
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     textAlign: 'right',
-                    // padding: '4px 8px',
                     [`@media (max-width: ${420}px)`]: {
                       whiteSpace: 'normal',
                       wordWrap: 'break-word',
