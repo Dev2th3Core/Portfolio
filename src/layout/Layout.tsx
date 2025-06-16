@@ -3,7 +3,6 @@ import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Home from "../components/Home";
 import JDAnalysisButton from "../components/JDAnalysis/JDAnalysisButton";
-import ResumeButton from "../components/ResumeButton";
 import { TabProvider } from "../context/TabContext";
 
 function Layout() {
