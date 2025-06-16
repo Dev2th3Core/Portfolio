@@ -3,6 +3,8 @@ import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Home from "../components/Home";
 import JDAnalysisButton from "../components/JDAnalysis/JDAnalysisButton";
+import ResumeButton from "../components/ResumeButton";
+import { TabProvider } from "../context/TabContext";
 
 function Layout() {
   const theme = useTheme();
@@ -28,6 +30,7 @@ function Layout() {
     document.documentElement.setAttribute('data-theme', toggleDarkMode ? 'dark' : 'light');// applying the primary and secondary theme colors
 
   };
+
 
   // applying the primary and secondary theme colors
   const darkTheme = createTheme({
@@ -85,15 +88,16 @@ function Layout() {
       }
     }
   });
-
   return (
     <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <Box sx={{ display: "flex", width: '100vw'}}>
-        <Sidebar showSidebar={showSidebar} handleTogglePage={handleTogglePage}/>
-        <Home showSidebar={showSidebar} toggleDarkTheme={toggleDarkTheme} handleTogglePage={handleTogglePage} />
-        <JDAnalysisButton />
-      </Box>
+      <TabProvider>
+        <CssBaseline />
+        <Box sx={{ display: "flex", width: '100vw'}}>
+          <Sidebar showSidebar={showSidebar} handleTogglePage={handleTogglePage}/>
+          <Home showSidebar={showSidebar} toggleDarkTheme={toggleDarkTheme} handleTogglePage={handleTogglePage} />
+          <JDAnalysisButton />
+        </Box>
+      </TabProvider>
     </ThemeProvider>
   )
 }

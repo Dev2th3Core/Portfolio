@@ -1,5 +1,5 @@
 import { Box, Tab, Tabs } from "@mui/material";
-import { useState } from "react";
+import { useTab } from "../context/TabContext";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -31,9 +31,8 @@ function a11yProps(index: number) {
 }
 
 
-const useTabLayout = (ContentComponent: React.ComponentType<any>, AIComponent: React.ComponentType<any>, title: string) => {
-  return (props: any) => {
-    const [value, setValue] = useState(0);
+const useTabLayout = (ContentComponent: React.ComponentType<any>, AIComponent: React.ComponentType<any>, title: string) => {  return (props: any) => {
+    const { activeTab: value, setActiveTab: setValue } = useTab();
 
     const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
       setValue(newValue);

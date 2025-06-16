@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Tooltip, useMediaQuery, useTheme, CircularProgress } from '@mui/material';
 import { DownloadForOffline } from '@mui/icons-material';
+import { useTab } from '../context/TabContext';
 
 interface ResumeButtonProps {
   className?: string;
@@ -14,8 +15,14 @@ const ResumeButton: React.FC<ResumeButtonProps> = ({
   size = 'medium'
 }) => {
   const theme = useTheme();
+  const { activeTab } = useTab();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const [isDownloading, setIsDownloading] = useState(false);
+
+  // Hide component if on AI Assistant tab and screen is smaller than tablet
+  if (activeTab === 1 && isSmallScreen) {
+    return null;
+  }
 
   const handleDownload = () => {
     try {
@@ -74,4 +81,4 @@ const ResumeButton: React.FC<ResumeButtonProps> = ({
   );
 };
 
-export default ResumeButton; 
+export default ResumeButton;

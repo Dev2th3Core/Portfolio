@@ -21,6 +21,7 @@ import { useDropzone } from 'react-dropzone';
 import { analyzeJobDescription } from '../../services/api/jdAnalysisApi';
 import { pdfjsLib } from '../../utils/pdfjs-init';
 import mammoth from 'mammoth';
+import { ConnectionAlert } from '../ConnectionAlert';
 
 interface JDAnalysisModalProps {
   open: boolean;
@@ -158,311 +159,276 @@ const JDAnalysisModal: React.FC<JDAnalysisModalProps> = ({ open, onClose }) => {
   };
 
   return (
-    <Modal
-      open={open}
-      onClose={onClose}
-      aria-labelledby="jd-analysis-modal"
-      closeAfterTransition
-    >
-      <Fade in={open}>
-        <Box sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: isSmallScreen ? '95%' : '85%',
-          maxWidth: 1000,
-          maxHeight: '90vh',
-          bgcolor: 'background.paper',
-          borderRadius: 4,
-          boxShadow: theme.shadows[24],
-          py: 4,
-          px: {
-            xs: 2,
-            sm: 4
-          },
-          overflow: 'auto',
-          '&::-webkit-scrollbar': {
-            width: '8px',
-          },
-          '&::-webkit-scrollbar-thumb': {
-            backgroundColor: 'rgba(0,0,0,0.2)',
-            borderRadius: '4px',
-          },
-          background: theme.palette.mode === 'dark' 
-            ? 'linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%)'
-            : 'linear-gradient(145deg, #ffffff 0%, #f5f5f5 100%)',
-        }}>
-          <IconButton
-            onClick={onClose}
-            sx={{
-              position: 'absolute',
-              right: 8,
-              top: 8,
-              color: 'text.secondary',
-              transition: 'all 0.2s',
-              '&:hover': {
-                transform: 'rotate(90deg)',
-                color: 'primary.main',
+    <>
+      <Modal
+        open={open}
+        onClose={onClose}
+        aria-labelledby="jd-analysis-modal"
+        closeAfterTransition
+      >
+        <Fade in={open}>
+          <Box sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: isSmallScreen ? '95%' : '85%',
+            maxWidth: 1000,
+            maxHeight: '90vh',
+            bgcolor: 'background.paper',
+            borderRadius: 4,
+            boxShadow: theme.shadows[24],
+            py: 4,
+            px: {
+              xs: 2,
+              sm: 4
+            },
+            overflow: 'auto',
+            '&::-webkit-scrollbar': {
+              width: '8px',
               },
-            }}
-          >
-            <Close />
-          </IconButton>
-          
-          <Box sx={{ display: 'flex', alignItems: 'center', mb: 3, gap: 1 }}>
-            <AutoAwesome sx={{ 
-              color: 'primary.main',
-              animation: 'pulse 2s infinite',
-              '@keyframes pulse': {
-                '0%': { opacity: 1 },
-                '50%': { opacity: 0.5 },
-                '100%': { opacity: 1 },
-              }
-            }} />
-            <Typography variant="h5" component="h2" sx={{
-              background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              color: 'transparent',
-              fontWeight: 600,
-            }}>
-              AI Job Description Analyzer
-            </Typography>
-          </Box>
-
-          {!analysisResult ? (
-            <>
-              
-              <Typography variant="body1" sx={{ mb: 3, color: 'text.secondary', textAlign: 'left' }}>
-                Are you a recruiter or hiring manager? Paste your job description here, and our AI will analyze how well my skills and experience align with your requirements. This tool helps you quickly assess my fit for your role by comparing the job requirements against my professional profile.
-              </Typography>
-
-              <Box sx={{ 
-                display: 'flex', 
-                flexDirection: { xs: 'column', sm: 'row' },
-                gap: 2, 
-                mb: 3,
-                '& .MuiButton-root': {
-                  transition: 'all 0.2s',
-                  '&:hover': {
-                    transform: 'translateY(-2px)',
-                    boxShadow: theme.shadows[4],
-                  }
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: 'rgba(0,0,0,0.2)',
+                borderRadius: '4px',
+              },
+              background: theme.palette.mode === 'dark' 
+              ? 'linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%)'
+              : 'linear-gradient(145deg, #ffffff 0%, #f5f5f5 100%)',
+          }}>
+            <IconButton
+              onClick={onClose}
+              sx={{
+                position: 'absolute',
+                right: 8,
+                top: 8,
+                color: 'text.secondary',
+                transition: 'all 0.2s',
+                '&:hover': {
+                  transform: 'rotate(90deg)',
+                  color: 'primary.main',
+                },
+              }}
+            >
+              <Close />
+            </IconButton>
+            
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 3, gap: 1 }}>
+              <AutoAwesome sx={{ 
+                color: 'primary.main',
+                animation: 'pulse 2s infinite',
+                '@keyframes pulse': {
+                  '0%': { opacity: 1 },
+                  '50%': { opacity: 0.5 },
+                  '100%': { opacity: 1 },
                 }
+              }} />
+              <Typography variant="h5" component="h2" sx={{
+                background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                color: 'transparent',
+                fontWeight: 600,
               }}>
-                <Button
-                  variant={activeInput === 'text' ? 'contained' : 'outlined'}
-                  onClick={() => !uploadedFile && setActiveInput('text')}
-                  startIcon={<Description />}
-                  sx={{ 
-                    borderRadius: 3,
-                    opacity: uploadedFile ? 0.5 : 1,
-                    cursor: uploadedFile ? 'not-allowed' : 'pointer'
-                  }}
-                  disabled={!!uploadedFile}
-                >
-                  Paste Text
-                </Button>
-                <Button
-                  variant={activeInput === 'file' ? 'contained' : 'outlined'}
-                  onClick={() => setActiveInput('file')}
-                  startIcon={<Upload />}
-                  sx={{ borderRadius: 3 }}
-                  disabled={jdText.trim() !== ''}
-                >
-                  Upload File
-                </Button>
-              </Box>
+                AI Job Description Analyzer
+              </Typography>
+            </Box>
+            <ConnectionAlert />
 
-              {activeInput === 'text' && !uploadedFile ? (
-                <TextField
-                  multiline
-                  rows={8}
-                  fullWidth
-                  placeholder="Paste the job description here..."
-                  value={jdText}
-                  onChange={(e) => setJdText(e.target.value)}
-                  error={!!error}
-                  helperText={error}
-                  sx={{ 
-                    mb: 3,
-                    '& .MuiOutlinedInput-root': {
-                      transition: 'all 0.3s',
-                      '&:hover': {
-                        boxShadow: '0 0 0 2px rgba(33, 150, 243, 0.1)',
-                      },
-                      '&.Mui-focused': {
-                        boxShadow: '0 0 0 3px rgba(33, 150, 243, 0.2)',
-                      }
-                    }
-                  }}
-                  disabled={!!uploadedFile}
-                />
-              ) : (
-                <Paper
-                  {...getRootProps()}
-                  sx={{
-                    p: 3,
-                    mb: 3,
-                    border: '2px dashed',
-                    borderColor: isDragActive ? 'primary.main' : 'divider',
-                    borderRadius: 3,
-                    transition: 'all 0.3s ease',
-                    cursor: 'pointer',
-                    backgroundColor: isDragActive ? 'action.hover' : 'background.paper',
+            {!analysisResult ? (
+              <>
+                
+                <Typography variant="body1" sx={{ mb: 3, color: 'text.secondary', textAlign: 'left' }}>
+                  Are you a recruiter or hiring manager? Paste your job description here, and our AI will analyze how well my skills and experience align with your requirements. This tool helps you quickly assess my fit for your role by comparing the job requirements against my professional profile.
+                </Typography>
+
+                <Box sx={{ 
+                  display: 'flex', 
+                  flexDirection: { xs: 'column', sm: 'row' },
+                  gap: 2, 
+                  mb: 3,
+                  '& .MuiButton-root': {
+                    transition: 'all 0.2s',
                     '&:hover': {
-                      borderColor: 'primary.main',
                       transform: 'translateY(-2px)',
                       boxShadow: theme.shadows[4],
-                    },
-                  }}
-                >
-                  {uploadedFile ? (
-                    <Box sx={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      gap: { xs: 1, md: 2},
-                      p: { xs: 1, md: 2},
-                      width: 'fit-content',
-                      margin: '0 auto',
-                      border: '1px solid',
-                      borderColor: 'divider',
-                      borderRadius: 2,
-                      bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)',
-                      boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
-                      position: 'relative',
-                      '&:hover': {
-                        bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.04)',
-                      }
-                    }}>
-                      <Description sx={{ 
-                        color: 'primary.main',
-                        fontSize: 24
-                      }} />
-                      <Box sx={{ flexGrow: 1 }}>
-                        <Typography variant="body1" sx={{ fontWeight: 500 }}>
-                          {uploadedFile.name}
-                        </Typography>
-                        <Typography variant="caption" color="text.secondary">
-                          {`${Math.ceil(uploadedFile.content.length / 1000)}KB • ${new Date().toLocaleDateString()}`}
-                        </Typography>
-                      </Box>
-                      <Tooltip title="Remove file" arrow>
-                        <IconButton 
-                          size="small" 
-                          onClick={handleRemoveFile}
-                          sx={{
-                            '&:hover': {
-                              color: 'error.main',
-                              bgcolor: theme.palette.mode === 'dark' ? 'rgba(244,67,54,0.1)' : 'rgba(244,67,54,0.1)',
-                            }
-                          }}
-                          >
-                          <Close />
-                        </IconButton>
-                      </Tooltip>
-                    </Box>
-                  ) : (
-                    <>
-                      <Upload sx={{ display: 'block' ,fontSize: 40, color: 'primary.main', m: '0 auto' }} />
-                      {
-                        !isMobileScreen 
-                        &&
-                        (
-                        <>
-                          <Typography variant="h6" gutterBottom textAlign={'center'}>
-                            {isDragActive ? 'Drop your file here' : 'Drag & drop your file here'}
-                          </Typography>
-                          <Typography variant='body2' gutterBottom textAlign={'center'}>
-                            OR
-                          </Typography>
-                        </>
-                        )
-                      }
-                      <Typography variant="body2" color="text.secondary" textAlign={'center'}>
-                        click to select a file (Supported: TXT, PDF, DOC, DOCX)
-                      </Typography>
-                    </>
-                  )}
-                  {error && (
-                    <Typography color="error" sx={{ mt: 2 }}>
-                      {error}
-                    </Typography>
-                  )}
-                </Paper>
-              )}
-
-              <TextField
-                fullWidth
-                placeholder="Additional Requirement (Optional)"
-                value={customPrompt}
-                onChange={(e) => setCustomPrompt(e.target.value)}
-                sx={{ mb: 3 }}
-              />
-
-              {isAnalyzing && (
-                <Box sx={{ width: '100%', mb: 3 }}>
-                  <LinearProgress
-                    sx={{
-                      height: 6,
+                    }
+                  }
+                }}>
+                  <Button
+                    variant={activeInput === 'text' ? 'contained' : 'outlined'}
+                    onClick={() => !uploadedFile && setActiveInput('text')}
+                    startIcon={<Description />}
+                    sx={{ 
                       borderRadius: 3,
-                      '& .MuiLinearProgress-bar': {
-                        backgroundImage: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+                      opacity: uploadedFile ? 0.5 : 1,
+                      cursor: uploadedFile ? 'not-allowed' : 'pointer'
+                    }}
+                    disabled={!!uploadedFile}
+                  >
+                    Paste Text
+                  </Button>
+                  <Button
+                    variant={activeInput === 'file' ? 'contained' : 'outlined'}
+                    onClick={() => setActiveInput('file')}
+                    startIcon={<Upload />}
+                    sx={{ borderRadius: 3 }}
+                    disabled={jdText.trim() !== ''}
+                  >
+                    Upload File
+                  </Button>
+                </Box>
+
+                {activeInput === 'text' && !uploadedFile ? (
+                  <TextField
+                    multiline
+                    rows={8}
+                    fullWidth
+                    placeholder="Paste the job description here..."
+                    value={jdText}
+                    onChange={(e) => setJdText(e.target.value)}
+                    error={!!error}
+                    helperText={error}
+                    sx={{ 
+                      mb: 3,
+                      '& .MuiOutlinedInput-root': {
+                        transition: 'all 0.3s',
+                        '&:hover': {
+                          boxShadow: '0 0 0 2px rgba(33, 150, 243, 0.1)',
+                        },
+                        '&.Mui-focused': {
+                          boxShadow: '0 0 0 3px rgba(33, 150, 243, 0.2)',
+                        }
                       }
                     }}
+                    disabled={!!uploadedFile}
                   />
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{ mt: 1, textAlign: 'center', fontStyle: 'italic' }}
+                ) : (
+                  <Paper
+                    {...getRootProps()}
+                    sx={{
+                      p: 3,
+                      mb: 3,
+                      border: '2px dashed',
+                      borderColor: isDragActive ? 'primary.main' : 'divider',
+                      borderRadius: 3,
+                      transition: 'all 0.3s ease',
+                      cursor: 'pointer',
+                      backgroundColor: isDragActive ? 'action.hover' : 'background.paper',
+                      '&:hover': {
+                        borderColor: 'primary.main',
+                        transform: 'translateY(-2px)',
+                        boxShadow: theme.shadows[4],
+                      },
+                    }}
                   >
-                    AI is analyzing your job description...
-                  </Typography>
-                </Box>
-              )}
-              <input {...getInputProps()} />
-              <Box sx={{ 
-                display: 'flex',
-                gap: 2,
-                justifyContent: 'flex-end',
-                '& .MuiButton-root': {
-                  transition: 'all 0.2s',
-                  '&:hover': {
-                    transform: 'translateY(-2px)',
-                    boxShadow: theme.shadows[4],
-                  }
-                }
-              }}>
-                <Button
-                  variant="outlined"
-                  onClick={onClose}
-                  disabled={isAnalyzing}
-                  sx={{ borderRadius: 3 }}
-                >
-                  Cancel
-                </Button>
-                <Button
-                  variant="contained"
-                  onClick={handleAnalyze}
-                  disabled={isAnalyzing || !jdText.trim()}
-                  sx={{ borderRadius: 3 }}
-                  startIcon={isAnalyzing ? <CircularProgress size={20} /> : null}
-                >
-                  {isAnalyzing ? 'Analyzing...' : 'Analyze'}
-                </Button>
-              </Box>
-            </>
-          ) : (
-            <Fade in>
-              <Box>
-                <JDAnalysisResults result={analysisResult} />
+                    {uploadedFile ? (
+                      <Box sx={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        gap: { xs: 1, md: 2},
+                        p: { xs: 1, md: 2},
+                        width: 'fit-content',
+                        margin: '0 auto',
+                        border: '1px solid',
+                        borderColor: 'divider',
+                        borderRadius: 2,
+                        bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)',
+                        boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+                        position: 'relative',
+                        '&:hover': {
+                          bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.04)',
+                        }
+                      }}>
+                        <Description sx={{ 
+                          color: 'primary.main',
+                          fontSize: 24
+                        }} />
+                        <Box sx={{ flexGrow: 1 }}>
+                          <Typography variant="body1" sx={{ fontWeight: 500 }}>
+                            {uploadedFile.name}
+                          </Typography>
+                          <Typography variant="caption" color="text.secondary">
+                            {`${Math.ceil(uploadedFile.content.length / 1000)}KB • ${new Date().toLocaleDateString()}`}
+                          </Typography>
+                        </Box>
+                        <Tooltip title="Remove file" arrow>
+                          <IconButton 
+                            size="small" 
+                            onClick={handleRemoveFile}
+                            sx={{
+                              '&:hover': {
+                                color: 'error.main',
+                                bgcolor: theme.palette.mode === 'dark' ? 'rgba(244,67,54,0.1)' : 'rgba(244,67,54,0.1)',
+                              }
+                            }}
+                            >
+                            <Close />
+                          </IconButton>
+                        </Tooltip>
+                      </Box>
+                    ) : (
+                      <>
+                        <Upload sx={{ display: 'block' ,fontSize: 40, color: 'primary.main', m: '0 auto' }} />
+                        {
+                          !isMobileScreen 
+                          &&
+                          (
+                          <>
+                            <Typography variant="h6" gutterBottom textAlign={'center'}>
+                              {isDragActive ? 'Drop your file here' : 'Drag & drop your file here'}
+                            </Typography>
+                            <Typography variant='body2' gutterBottom textAlign={'center'}>
+                              OR
+                            </Typography>
+                          </>
+                          )
+                        }
+                        <Typography variant="body2" color="text.secondary" textAlign={'center'}>
+                          click to select a file (Supported: TXT, PDF, DOC, DOCX)
+                        </Typography>
+                      </>
+                    )}
+                    {error && (
+                      <Typography color="error" sx={{ mt: 2 }}>
+                        {error}
+                      </Typography>
+                    )}
+                  </Paper>
+                )}
+
+                <TextField
+                  fullWidth
+                  placeholder="Additional Requirement (Optional)"
+                  value={customPrompt}
+                  onChange={(e) => setCustomPrompt(e.target.value)}
+                  sx={{ mb: 3 }}
+                />
+
+                {isAnalyzing && (
+                  <Box sx={{ width: '100%', mb: 3 }}>
+                    <LinearProgress
+                      sx={{
+                        height: 6,
+                        borderRadius: 3,
+                        '& .MuiLinearProgress-bar': {
+                          backgroundImage: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+                        }
+                      }}
+                    />
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      sx={{ mt: 1, textAlign: 'center', fontStyle: 'italic' }}
+                    >
+                      AI is analyzing your job description...
+                    </Typography>
+                  </Box>
+                )}
+                <input {...getInputProps()} />
                 <Box sx={{ 
                   display: 'flex',
-                  flexDirection: { xs: 'column', sm: 'row' },
                   gap: 2,
                   justifyContent: 'flex-end',
-                  mt: 2,
                   '& .MuiButton-root': {
                     transition: 'all 0.2s',
                     '&:hover': {
@@ -473,25 +439,63 @@ const JDAnalysisModal: React.FC<JDAnalysisModalProps> = ({ open, onClose }) => {
                 }}>
                   <Button
                     variant="outlined"
-                    onClick={handleReset}
+                    onClick={onClose}
+                    disabled={isAnalyzing}
                     sx={{ borderRadius: 3 }}
                   >
-                    Analyze Another JD
+                    Cancel
                   </Button>
                   <Button
                     variant="contained"
-                    onClick={onClose}
+                    onClick={handleAnalyze}
+                    disabled={isAnalyzing || !jdText.trim()}
                     sx={{ borderRadius: 3 }}
+                    startIcon={isAnalyzing ? <CircularProgress size={20} /> : null}
                   >
-                    Close
+                    {isAnalyzing ? 'Analyzing...' : 'Analyze'}
                   </Button>
                 </Box>
-              </Box>
-            </Fade>
-          )}
-        </Box>
-      </Fade>
-    </Modal>
+              </>
+            ) : (
+              <Fade in>
+                <Box>
+                  <JDAnalysisResults result={analysisResult} />
+                  <Box sx={{ 
+                    display: 'flex',
+                    flexDirection: { xs: 'column', sm: 'row' },
+                    gap: 2,
+                    justifyContent: 'flex-end',
+                    mt: 2,
+                    '& .MuiButton-root': {
+                      transition: 'all 0.2s',
+                      '&:hover': {
+                        transform: 'translateY(-2px)',
+                        boxShadow: theme.shadows[4],
+                      }
+                    }
+                  }}>
+                    <Button
+                      variant="outlined"
+                      onClick={handleReset}
+                      sx={{ borderRadius: 3 }}
+                    >
+                      Analyze Another JD
+                    </Button>
+                    <Button
+                      variant="contained"
+                      onClick={onClose}
+                      sx={{ borderRadius: 3 }}
+                    >
+                      Close
+                    </Button>
+                  </Box>
+                </Box>
+              </Fade>
+            )}
+          </Box>
+        </Fade>
+      </Modal>
+    </>
   );
 };
 

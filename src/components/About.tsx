@@ -1,5 +1,5 @@
 import { Box, Typography, Paper, Avatar } from "@mui/material";
-import AIAssistant from "./AIAssistant";
+import AIAssistant from "./AIAssistantUI/AIAssistant";
 import useTabLayout from "../hooks/useTabLayout";
 import image from "../assets/profile-photo.png";
 import Skills from "./Skills";
