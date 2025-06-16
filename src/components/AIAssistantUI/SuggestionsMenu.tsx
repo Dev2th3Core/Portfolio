@@ -7,10 +7,11 @@ interface SuggestionsMenuProps {
   showSuggestions: boolean;
   isClosing: boolean;
   suggestedQuestions: string[];
-  chipExpand: string;
-  chipShrink: string;
+  chipExpand: any;
+  chipShrink: any;
   isDark: boolean;
   onToggle: () => void;
+  onSelectQuestion?: (question: string) => void;
 }
 
 const SuggestionsMenu: React.FC<SuggestionsMenuProps> = ({
@@ -21,6 +22,7 @@ const SuggestionsMenu: React.FC<SuggestionsMenuProps> = ({
   chipShrink,
   isDark,
   onToggle,
+  onSelectQuestion
 }) => (
   <Box sx={{ position: 'absolute', bottom: 80, right: 5, zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', minWidth: 200 }}>
     <Tooltip title={showSuggestions ? 'Hide suggestions' : 'Show suggestions'} placement="left">
@@ -39,7 +41,7 @@ const SuggestionsMenu: React.FC<SuggestionsMenuProps> = ({
           <Box
             key={i}
             sx={{
-              overflow: 'hidden',
+              overflow: 'visible',
               display: 'inline-block',
               animation: `${showSuggestions ? chipExpand : chipShrink} 0.35s cubic-bezier(0.4, 0, 0.2, 1) both`,
               animationDelay: `${i * 120}ms`,
@@ -50,18 +52,37 @@ const SuggestionsMenu: React.FC<SuggestionsMenuProps> = ({
               <Chip
                 label={q}
                 size="medium"
+                onClick={() => onSelectQuestion?.(q)}
                 clickable
                 sx={{
                   fontSize: 16,
                   fontWeight: 500,
-                  px: 2,
+                  px: 1,
                   py: 1,
                   borderRadius: 2,
                   width: 'fit-content',
                   maxWidth: '80vw',
+                  height: 'auto',
+                  minHeight: '8px',
                   border: '1px solid',
                   bgcolor: isDark ? 'background.default' : '#f1f3fa',
                   color: isDark ? 'text.primary' : 'text.secondary',
+                  '& .MuiChip-label': {
+                    display: 'block',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    textAlign: 'right',
+                    // padding: '4px 8px',
+                    [`@media (max-width: ${420}px)`]: {
+                      whiteSpace: 'normal',
+                      wordWrap: 'break-word',
+                    },
+                    [`@container (max-width: ${420}px)`]: {
+                      whiteSpace: 'normal',
+                      wordWrap: 'break-word',
+                    }
+                  },
                   ":hover": {
                     transform: 'none',
                     boxShadow: 'none',

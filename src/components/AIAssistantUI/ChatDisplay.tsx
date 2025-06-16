@@ -1,10 +1,13 @@
-import React from 'react';
-import { Box, Typography } from '@mui/material';
+import React, { useEffect, useRef } from 'react';
+import { Box, Typography, Button } from '@mui/material';
+import { ReplayRounded } from '@mui/icons-material';
 import { Message } from '../../types/assistant';
 
 interface ChatDisplayProps {
   messages: Message[];
   isDark: boolean;
+  onReset?: () => void;
+  onRetry?: () => void;
 }
 
 const WelcomeMessage: React.FC<{ isDark: boolean }> = ({ isDark }) => (
@@ -47,65 +50,113 @@ const WelcomeMessage: React.FC<{ isDark: boolean }> = ({ isDark }) => (
     </Box>
 );
 
-const ChatDisplay: React.FC<ChatDisplayProps> = ({ messages, isDark }) => {
+const ChatDisplay: React.FC<ChatDisplayProps> = ({ messages, isDark, onRetry }) => {
   const hasUserMessages = messages.some(m => m.role === 'user');
+  const latestQuestionRef = useRef<HTMLDivElement>(null);
+
+  const scrollToLatestQuestion = () => {
+    if (latestQuestionRef.current) {
+      latestQuestionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Scroll to latest question when messages change
+  useEffect(() => {
+    scrollToLatestQuestion();
+  }, [messages]);
+
+  // Find the index of the last user message
+  const lastUserMessageIndex = messages.map(m => m.role).lastIndexOf('user');
 
   return (
     <Box
-      sx={{
+      sx={{        
         flex: 1,
         overflowY: 'auto',
-        mb: 2,
+        mb: 1,
         px: 1,
         display: 'flex',
         flexDirection: 'column',
         gap: 2,
-        minHeight: 120,
-        maxHeight: { xs: '40vh', sm: '55vh', md: '60vh' },
+        height: '100%',
+        minHeight: '30vh',
+        maxHeight: '57vh',
         justifyContent: hasUserMessages ? 'flex-start' : 'center',
         alignItems: hasUserMessages ? 'stretch' : 'center',
+        position: 'relative',
       }}
     >
       {!hasUserMessages ? (
         <WelcomeMessage isDark={isDark} />
       ) : (
-        messages.map((msg, idx) => (
-          <Box
-            key={idx}
-            sx={{
-              display: 'flex',
-              justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start',
-            }}
-          >
+        <>
+          {messages.map((msg, idx) => (
             <Box
+              key={idx}
+              ref={idx === lastUserMessageIndex ? latestQuestionRef : undefined}
               sx={{
-                bgcolor: msg.role === 'user'
-                  ? (isDark ? 'primary.dark' : 'primary.main')
-                  : (isDark ? 'background.default' : '#f1f3fa'),
-                color: msg.role === 'user'
-                  ? '#fff'
-                  : (isDark ? 'text.primary' : 'text.secondary'),
-                px: 2.2,
-                py: 1.2,
-                borderRadius: 3,
-                maxWidth: '75%',
-                fontSize: 16,
-                fontWeight: 500,
-                boxShadow: msg.role === 'user'
-                  ? '0 2px 8px 0 rgba(25,118,210,0.10)'
-                  : '0 1px 6px 0 rgba(0,0,0,0.06)',
-                borderTopRightRadius: msg.role === 'user' ? 6 : 24,
-                borderTopLeftRadius: msg.role === 'user' ? 24 : 6,
-                borderBottomRightRadius: msg.role === 'user' ? 6 : 24,
-                borderBottomLeftRadius: msg.role === 'user' ? 24 : 6,
-                wordBreak: 'break-word',
-                transition: 'background 0.2s',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: msg.role === 'user' ? 'flex-end' : 'flex-start',
+                pb: {
+                  xs: 1,
+                  sm: 0
+                }
               }}
             >
-              {msg.text}
+              <Box
+                sx={{
+                  textAlign: msg.role === 'user' ? 'right' : 'left',
+                  bgcolor: msg.role === 'user'
+                    ? (isDark ? 'primary.dark' : 'primary.main')
+                    : (isDark ? 'background.default' : '#f1f3fa'),
+                  color: msg.role === 'user'
+                    ? '#fff'
+                    : (isDark ? 'text.primary' : 'text.secondary'),
+                  px: {
+                    xs: 1,
+                    sm: 2
+                  },
+                  py: 1,
+                  borderRadius: 3,
+                  maxWidth: '75%',
+                  fontSize: 16,
+                  fontWeight: 500,
+                  boxShadow: msg.role === 'user'
+                    ? '0 2px 8px 0 rgba(25,118,210,0.10)'
+                    : '0 1px 6px 0 rgba(0,0,0,0.06)',
+                  borderTopRightRadius: msg.role === 'user' ? 6 : 24,
+                  borderTopLeftRadius: msg.role === 'user' ? 24 : 6,
+                  borderBottomRightRadius: msg.role === 'user' ? 6 : 24,
+                  borderBottomLeftRadius: msg.role === 'user' ? 24 : 6,
+                  wordBreak: 'break-word',
+                  transition: 'background 0.2s',
+                }}
+              >
+                {msg.text}
+              </Box>
+              {msg.role === 'ai' && msg.isError && onRetry && (
+                <Button
+                  variant="text"
+                  color="primary"
+                  size="small"
+                  onClick={onRetry}
+                  startIcon={<ReplayRounded />}
+                  sx={{
+                    mt: 1,
+                    fontSize: 14,
+                    textTransform: 'none',
+                    '&:hover': {
+                      backgroundColor: isDark ? 'rgba(33, 150, 243, 0.08)' : 'rgba(33, 150, 243, 0.04)',
+                    }
+                  }}
+                >
+                  Try Again
+                </Button>
+              )}
             </Box>
-          </Box>
-        ))
+          ))}
+        </>
       )}
     </Box>
   );

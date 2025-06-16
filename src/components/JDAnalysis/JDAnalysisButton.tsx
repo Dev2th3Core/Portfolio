@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
-import { Button, Tooltip, Box } from '@mui/material';
+import { Button, Tooltip, Box, useTheme, useMediaQuery } from '@mui/material';
 import { BusinessCenter } from '@mui/icons-material';
 import JDAnalysisModal from './JDAnalysisModal';
+import { useTab } from '../../context/TabContext';
 
 const JDAnalysisButton: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const theme = useTheme();
+  const { activeTab } = useTab();
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up('md'));
+
+  // Hide button if we're on AI Assistant tab and screen is smaller than laptop
+  if (activeTab === 1 && !isLargeScreen) {
+    return null;
+  }
 
   return (
     <>
