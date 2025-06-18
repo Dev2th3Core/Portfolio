@@ -59,16 +59,6 @@ const AIAssistantInput: React.FC<AIAssistantInputProps> = ({
         minRows={1}
         maxRows={5}
         disabled={isLoading}
-        // inputProps={{
-        //   style: {
-        //     overflowY: 'auto',
-        //     maxHeight: '160px',
-        //     resize: 'none',
-        //     fontSize: 16,
-        //     fontWeight: 500,
-        //     lineHeight: 1.6,
-        //   },
-        // }}
         sx={{
           bgcolor: isDark ? 'background.default' : '#f1f3fa',
           color: isDark ? 'text.primary' : 'text.secondary',
@@ -80,7 +70,6 @@ const AIAssistantInput: React.FC<AIAssistantInputProps> = ({
           borderColor: isDark ? theme.palette.divider : '#e3e8f0',
           transition: 'border-color 0.2s',
           '& .MuiOutlinedInput-root': {
-            p: { xs: 1, sm: 2 },
             pr: 0,
             alignItems: 'flex-end',
             background: 'transparent',
@@ -107,13 +96,13 @@ const AIAssistantInput: React.FC<AIAssistantInputProps> = ({
         slotProps={{
           input:{
             endAdornment: (
-              <InputAdornment position="end" sx={{ position: 'absolute', right: { xs: 3, sm: 8}, bottom: { xs: 3, sm: 12} }}>
+              <InputAdornment position="end" sx={{ position: 'absolute', right: 8, bottom: 12 }}>
                 <IconButton
                   type="submit"
                   color="primary"
                   disabled={!message.trim() || isLoading}
                   sx={{
-                    p: { xs: '4px', sm: 1},
+                    p: 1,
                     background: theme.palette.primary.main,
                     color: '#fff',
                     boxShadow: '0 2px 8px 0 rgba(25,118,210,0.10)',
