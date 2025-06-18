@@ -221,7 +221,7 @@ const AIAssistant = () => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            flex: 1,
+            flex: .95,
             borderRadius: 4,
             p: { xs: 1, sm: 2},
             background: isDark
