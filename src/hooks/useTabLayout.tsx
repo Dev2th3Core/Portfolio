@@ -45,16 +45,21 @@ const useTabLayout = (ContentComponent: React.ComponentType<any>, AIComponent: R
           <Tabs 
             value={value} 
             onChange={handleChange} 
-            aria-label={`${title} tabs`}
-            sx={{
-              '& .css-trhr3h-MuiButtonBase-root-MuiTab-root': {
-                minHeight: 1
-              }
-            }}  
+            aria-label={`${title} tabs`}  
           >
-            <Tab label={title} {...a11yProps(0)} />
+            <Tab label={title} {...a11yProps(0)} sx={{
+              minHeight: "48px!important",
+              py: 0
+            }} />
             <Tab
-              sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', color: 'primary.main'}} 
+              sx={{ 
+                display: 'flex', 
+                flexDirection: 'row', 
+                alignItems: 'center', 
+                color: 'primary.main',
+                minHeight: '48px!important',
+                py: 0
+              }} 
               label="Ask me" {...a11yProps(1)} 
               icon={
                 <AutoAwesome 
