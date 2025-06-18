@@ -32,10 +32,6 @@ const WelcomeMessage: React.FC<{ isDark: boolean }> = ({ isDark }) => (
             fontSize: 17,
             fontWeight: 500,
             boxShadow: '0 1px 6px 0 rgba(0,0,0,0.06)',
-            borderTopRightRadius: 24,
-            borderTopLeftRadius: 6,
-            borderBottomRightRadius: 24,
-            borderBottomLeftRadius: 6,
             textAlign: 'center',
             maxWidth: 420,
         }}

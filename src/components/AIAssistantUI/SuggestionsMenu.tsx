@@ -24,7 +24,7 @@ const SuggestionsMenu: React.FC<SuggestionsMenuProps> = ({
   onToggle,
   onSelectQuestion
 }) => (
-  <Box sx={{ position: 'absolute', bottom: 80, right: 5, zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', minWidth: 200 }}>
+  <Box sx={{ position: 'absolute', bottom: { xs: 50, sm: 80 }, right: 5, zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', minWidth: 200 }}>
     <Tooltip title={showSuggestions ? 'Hide suggestions' : 'Show suggestions'} placement="left">
       <Button 
         variant='outlined'
