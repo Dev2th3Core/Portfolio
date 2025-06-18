@@ -5,7 +5,6 @@ import { Theme } from '@mui/material/styles';
 import { useLocation } from 'react-router-dom';
 
 interface AIAssistantInputProps {
-  sectionTitle: string;
   isDark: boolean;
   theme: Theme;
   onSendMessage: (message: string) => Promise<void>;
@@ -22,7 +21,6 @@ const getInputPlaceholder = (pathname: string) => {
 };
 
 const AIAssistantInput: React.FC<AIAssistantInputProps> = ({ 
-  sectionTitle, 
   isDark, 
   theme, 
   onSendMessage,

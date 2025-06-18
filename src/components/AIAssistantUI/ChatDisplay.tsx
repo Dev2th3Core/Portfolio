@@ -73,7 +73,7 @@ const ChatDisplay: React.FC<ChatDisplayProps> = ({ messages, isDark, onRetry }) 
       sx={{        
         flex: 1,
         overflowY: 'auto',
-        mb: 1,
+        my: 1,
         px: 1,
         display: 'flex',
         flexDirection: 'column',

@@ -284,7 +284,6 @@ const AIAssistant = () => {
           </Box>
           {/* User input */}
           <AIAssistantInput 
-            sectionTitle={sectionTitle} 
             isDark={isDark} 
             theme={theme} 
             onSendMessage={handleSendMessage}
