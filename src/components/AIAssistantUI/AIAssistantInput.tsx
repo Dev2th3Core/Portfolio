@@ -59,16 +59,6 @@ const AIAssistantInput: React.FC<AIAssistantInputProps> = ({
         minRows={1}
         maxRows={5}
         disabled={isLoading}
-        // inputProps={{
-        //   style: {
-        //     overflowY: 'auto',
-        //     maxHeight: '160px',
-        //     resize: 'none',
-        //     fontSize: 16,
-        //     fontWeight: 500,
-        //     lineHeight: 1.6,
-        //   },
-        // }}
         sx={{
           bgcolor: isDark ? 'background.default' : '#f1f3fa',
           color: isDark ? 'text.primary' : 'text.secondary',
