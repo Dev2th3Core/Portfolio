@@ -73,11 +73,11 @@ const SuggestionsMenu: React.FC<SuggestionsMenuProps> = ({
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     textAlign: 'right',
-                    [`@media (max-width: ${420}px)`]: {
+                    [`@media (max-width: ${520}px)`]: {
                       whiteSpace: 'normal',
                       wordWrap: 'break-word',
                     },
-                    [`@container (max-width: ${420}px)`]: {
+                    [`@container (max-width: ${520}px)`]: {
                       whiteSpace: 'normal',
                       wordWrap: 'break-word',
                     }

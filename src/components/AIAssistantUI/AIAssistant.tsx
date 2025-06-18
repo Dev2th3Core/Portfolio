@@ -221,22 +221,22 @@ const AIAssistant = () => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'space-between',
             flex: 1,
             borderRadius: 4,
-            p: 2,
+            p: { xs: 1, sm: 2},
             background: isDark
               ? 'linear-gradient(135deg, #23272f 0%, #2c3440 100%)'
               : theme.palette.background.paper,
             boxShadow: '0 4px 24px rgba(0,0,0,0.25)',
             position: 'relative',
+            minHeight: 0, // allow flex children to shrink
           }}
         >
           <Box>
             <Typography
               variant="body1"
               color="text.secondary"
-              sx={{ mb: 1, mr: { xs: 2, sm: 0 }, fontStyle: 'italic' }}
+              sx={{ mb: 1, mr: { xs: 5, sm: 0 }, fontStyle: 'italic' }}
             >
               {getSectionOverview(sectionTitle)}
             </Typography>
@@ -248,11 +248,9 @@ const AIAssistant = () => {
                 position: 'absolute',
                 top: 8,
                 right: 8,
-                px: {
-                  xs : 0,
-                  sm: 1
-                },
+                p: { xs: .5, sm: 1},
                 zIndex: 1,
+                background: 'rgba(0, 0, 0, 0.12)',
                 color: isDark ? 'text.secondary' : 'text.primary',
                 opacity: 0.6,
                 ':hover': {
@@ -265,7 +263,7 @@ const AIAssistant = () => {
             </IconButton>
           </Tooltip>
           </Box>
-          <Box>
+          <Box sx={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
             <ChatDisplay 
               messages={currentMessages} 
               isDark={isDark} 

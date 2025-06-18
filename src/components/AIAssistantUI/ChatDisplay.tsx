@@ -79,8 +79,6 @@ const ChatDisplay: React.FC<ChatDisplayProps> = ({ messages, isDark, onRetry }) 
         flexDirection: 'column',
         gap: 2,
         height: '100%',
-        minHeight: '30vh',
-        maxHeight: '57vh',
         justifyContent: hasUserMessages ? 'flex-start' : 'center',
         alignItems: hasUserMessages ? 'stretch' : 'center',
         position: 'relative',

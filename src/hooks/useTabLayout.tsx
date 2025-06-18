@@ -1,5 +1,6 @@
 import { Box, Tab, Tabs } from "@mui/material";
 import { useTab } from "../context/TabContext";
+import { AutoAwesome } from "@mui/icons-material";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -41,9 +42,35 @@ const useTabLayout = (ContentComponent: React.ComponentType<any>, AIComponent: R
     return (
       <Box sx={{ width: '100%' }}>
         <Box sx={{ width: 'max-content', margin: '0 auto' }}>
-          <Tabs value={value} onChange={handleChange} aria-label={`${title} tabs`}>
+          <Tabs 
+            value={value} 
+            onChange={handleChange} 
+            aria-label={`${title} tabs`}
+            sx={{
+              '& .css-trhr3h-MuiButtonBase-root-MuiTab-root': {
+                minHeight: 1
+              }
+            }}  
+          >
             <Tab label={title} {...a11yProps(0)} />
-            <Tab label="AI Assistant" {...a11yProps(1)} />
+            <Tab
+              sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', color: 'primary.main'}} 
+              label="Ask me" {...a11yProps(1)} 
+              icon={
+                <AutoAwesome 
+                sx={{ 
+                  mt: 1,
+                  mr: 1,
+                  color: 'primary.main',
+                  animation: 'pulse 2s infinite',
+                  '@keyframes pulse': {
+                    '0%': { opacity: 1 },
+                    '50%': { opacity: 0.5 },
+                    '100%': { opacity: 1 },
+                  }
+                }} 
+              />} 
+            />
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>

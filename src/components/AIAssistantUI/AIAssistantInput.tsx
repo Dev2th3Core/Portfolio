@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, TextField, InputAdornment, IconButton, CircularProgress } from '@mui/material';
 import { ArrowUpward } from '@mui/icons-material';
 import { Theme } from '@mui/material/styles';
+import { useLocation } from 'react-router-dom';
 
 interface AIAssistantInputProps {
   sectionTitle: string;
@@ -10,6 +11,15 @@ interface AIAssistantInputProps {
   onSendMessage: (message: string) => Promise<void>;
   isLoading: boolean;
 }
+
+const getInputPlaceholder = (pathname: string) => {
+  if (pathname.includes("/experience")) return "Ask about my Experience";
+  if (pathname.includes("/projects")) return "Ask about my Projects";
+  if (pathname.includes("/techstack")) return "Ask about my TechStack";
+  if (pathname.includes("/contact")) return "Check how to connect";
+  if (pathname.includes("/")) return "Start a Conversation";
+  return "Ask me anything";
+};
 
 const AIAssistantInput: React.FC<AIAssistantInputProps> = ({ 
   sectionTitle, 
@@ -44,7 +54,7 @@ const AIAssistantInput: React.FC<AIAssistantInputProps> = ({
         fullWidth
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        placeholder={`Ask about ${sectionTitle === 'about' ? `MySelf` : `my ${sectionTitle}`}`}
+        placeholder={getInputPlaceholder(useLocation().pathname)}
         size="medium"
         variant="outlined"
         multiline
