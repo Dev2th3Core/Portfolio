@@ -79,7 +79,7 @@ export const ConnectionAlert: React.FC<ConnectionAlertProps> = ({ showManualDism
           right: 0,
           zIndex: 9999,
           boxShadow: 3,
-          width: '50%',
+          width: {xs: '90%', sm: '50%'},
           margin: '1rem auto',
           borderRadius: 4,
           animation: isExiting
