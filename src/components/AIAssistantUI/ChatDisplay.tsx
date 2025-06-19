@@ -48,21 +48,14 @@ const WelcomeMessage: React.FC<{ isDark: boolean }> = ({ isDark }) => (
 
 const ChatDisplay: React.FC<ChatDisplayProps> = ({ messages, isDark, onRetry }) => {
   const hasUserMessages = messages.some(m => m.role === 'user');
-  const latestQuestionRef = useRef<HTMLDivElement>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
-  const scrollToLatestQuestion = () => {
-    if (latestQuestionRef.current) {
-      latestQuestionRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  // Scroll to latest question when messages change
   useEffect(() => {
-    scrollToLatestQuestion();
+    if (bottomRef.current) {
+      bottomRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
   }, [messages]);
 
-  // Find the index of the last user message
-  const lastUserMessageIndex = messages.map(m => m.role).lastIndexOf('user');
 
   return (
     <Box
@@ -74,7 +67,8 @@ const ChatDisplay: React.FC<ChatDisplayProps> = ({ messages, isDark, onRetry }) 
         display: 'flex',
         flexDirection: 'column',
         gap: 2,
-        height: '100%',
+        height: { xs: '70dvh', sm: '100%' },
+        maxHeight: { xs: '70dvh', sm: '100%' },
         justifyContent: hasUserMessages ? 'flex-start' : 'center',
         alignItems: hasUserMessages ? 'stretch' : 'center',
         position: 'relative',
@@ -87,7 +81,6 @@ const ChatDisplay: React.FC<ChatDisplayProps> = ({ messages, isDark, onRetry }) 
           {messages.map((msg, idx) => (
             <Box
               key={idx}
-              ref={idx === lastUserMessageIndex ? latestQuestionRef : undefined}
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -150,6 +143,7 @@ const ChatDisplay: React.FC<ChatDisplayProps> = ({ messages, isDark, onRetry }) 
               )}
             </Box>
           ))}
+          <div ref={bottomRef} />
         </>
       )}
     </Box>

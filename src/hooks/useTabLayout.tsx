@@ -47,7 +47,7 @@ const useTabLayout = (ContentComponent: React.ComponentType<any>, AIComponent: R
             onChange={handleChange} 
             aria-label={`${title} tabs`}  
           >
-            <Tab label={title} {...a11yProps(0)} sx={{
+            <Tab label={"READ ME"} {...a11yProps(0)} sx={{
               minHeight: "48px!important",
               py: 0
             }} />
