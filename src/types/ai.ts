@@ -20,6 +20,23 @@ export interface WorkPreferenceMatch {
   comment: string;
 }
 
+export interface WorkPreferences {
+  location: {
+    remote: boolean;
+    hybrid: boolean;
+    onsite: boolean;
+    relocation: {
+      domestic: boolean;
+      international: boolean;
+      visaRequired: boolean;
+    };
+  };
+  workSchedule: {
+    daysPerWeek: number;
+    flexibleHours: boolean;
+  };
+}
+
 export interface JDAnalysisResult {
   skillsAnalysis: {
     matches: SkillMatch[];

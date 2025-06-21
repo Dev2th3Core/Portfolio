@@ -12,15 +12,17 @@ A modern, responsive portfolio website built with React, TypeScript, and Materia
 - **Social Integration**: Direct links to professional profiles
 - **Resume Download**: Quick access to latest resume
 
-## 🚀 Coming Soon: AI Integration
+## 🤖 AI Integration
 
-I'm currently working on integrating an AI assistant to provide more dynamic and detailed information about my:
-- Professional Experience
-- Technical Projects
-- Skills & Expertise
-- Educational Background
+The portfolio now features two powerful AI-driven tools, supported by a custom Netlify Function project called [NetliFunk](https://github.com/Rakshit4045/NetliFunk):
 
-The AI assistant will allow visitors to ask questions and receive detailed, contextual responses about my work history and capabilities.
+- **AI Job Description Analyzer**: Recruiters can upload or paste a Job Description for any role and instantly analyze how well my portfolio profile matches the requirements. This tool provides insights into skills alignment and suitability for the position.
+
+- **AI Assistant Chatbot**: Each section of the portfolio includes an AI-powered assistant. Visitors can ask any question not directly answered in the portfolio, and the chatbot will provide detailed, contextual responses. This feature is powered by Google's Gemini AI API, ensuring accurate and relevant answers about my experience, projects, skills, and more.
+
+All AI response generation is handled by the [NetliFunk](https://github.com/Rakshit4045/NetliFunk) Netlify Function project, which securely manages requests and integrates with Gemini AI.
+
+These AI features enhance interactivity and provide recruiters and visitors with deeper, personalized insights into my professional background.
 
 ## 🛠️ Built With
 
@@ -29,7 +31,7 @@ The AI assistant will allow visitors to ask questions and receive detailed, cont
 - Material-UI v7
 - React Router v7
 - Vite
-- Google's Generative AI (Coming Soon)
+- Google's Generative AI
 
 ## 🔧 Local Development
 
@@ -38,38 +40,55 @@ The AI assistant will allow visitors to ask questions and receive detailed, cont
 git clone https://github.com/Rakshit4045/Portfolio.git
 ```
 
-2. Install dependencies
+2. Create a `.env` file in the project root with the following variable:
+```env
+VITE_API_BASE_URL="http://localhost:8888"
+```
+Set the value to your NetliFunk deployment URL or your local NetliFunk server for testing.
+
+3. Install dependencies
 ```bash
 npm install
 ```
 
-3. Start the development server
+4. Start the development server
 ```bash
 npm run dev
 ```
 
-4. Build for production
+5. Build for production
 ```bash
 npm run build
 ```
 
 ## 🌐 Deployment
 
+To utilize AI features through  [NetliFunk](https://github.com/Rakshit4045/NetliFunk), create a repository secret in GitHub with the name `VITE_API_BASE_URL` and set its value to your NetliFunk deployment URL.
+
 The site is deployed using GitHub Pages. To deploy:
 ```bash
 npm run deploy
 ```
 
+
 ## 💻 Code Structure
 
 ```
 src/
+├── assets/         # Static assets (images, icons, etc.)
 ├── components/     # Reusable UI components
+│   ├── AIAssistantUI/   # AI Assistant related components
+│   └── JDAnalysis/      # Job Description Analyzer components
+├── context/        # React context providers
+├── data/           # Static and AI context data
+├── hooks/          # Custom React hooks
 ├── layout/         # Layout components
-├── routes/         # Route configurations
-├── pages/          # Page components
-├── assets/         # Static assets
-└── hooks/          # Custom React hooks
+├── pages/          # Page components (404, etc.)
+├── routes/         # Route configurations and constants
+├── services/       # API service modules
+├── types/          # TypeScript type definitions
+├── utils/          # Utility functions (e.g., PDF.js init)
+└── __tests__/      # Test files and sample data
 ```
 
 ## 🔗 Live Demo
