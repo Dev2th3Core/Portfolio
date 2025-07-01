@@ -12,7 +12,6 @@ import {
   SiMui,
   SiGooglegemini,
   SiNodedotjs,
-  SiExpress,
   SiNetlify,
   SiNextdotjs,
   SiTailwindcss,
