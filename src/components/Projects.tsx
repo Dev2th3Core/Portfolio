@@ -9,7 +9,14 @@ import {
   SiJavascript,
   SiCss3,
   SiDotnet,
-  SiMui
+  SiMui,
+  SiGooglegemini,
+  SiNodedotjs,
+  SiExpress,
+  SiNetlify,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiSocketdotio
 } from 'react-icons/si';
 import { TbBrandCSharp } from "react-icons/tb";
 import { GrConnect } from "react-icons/gr";
@@ -51,6 +58,30 @@ const ProjectsContent = () => {
       ],
       githubLink: "https://github.com/Rakshit4045/Portfolio",
       liveLink: "https://rakshit4045.github.io/Portfolio/"
+    },
+    {
+      title: "NetliFunk",
+      description: "NetliFunk is a serverless backend for my React portfolio, featuring a Gemini-powered AI assistant that answers questions about portfolio sections. It also supports AI-driven features like skill matching and job description analysis.",
+      technologies: [
+        { name: "Gemini API", icon: SiGooglegemini },
+        { name: "Node.js", icon: SiNodedotjs },
+        { name: "Netlify Functions", icon: SiNetlify },
+        { name: "TypeScript", icon: SiTypescript },
+      ],
+      githubLink: "https://github.com/Rakshit4045/NetliFunk"
+    },
+    {
+      title: "Tic-Tac-Toe Infinity",
+      description: "Tic-Tac-Toe Infinity takes the classic game to the next level with an exciting twist — no more draws! The grid expands infinitely, ensuring every match ends with a winner. Play against friends or smart bots in a dynamic, strategy-driven experience that keeps evolving.",
+      technologies: [
+        { name: "React", icon: SiReact },
+        { name: "Next.js", icon: SiNextdotjs },
+        { name: "TypeScript", icon: SiTypescript },
+        { name: "Socket.io", icon: SiSocketdotio },
+        { name: "Tailwind CSS", icon: SiTailwindcss }
+      ],
+      githubLink: "https://github.com/Rakshit4045/tic-tac-toe-infinity",
+      liveLink: "https://tic-tac-toe-infinity.onrender.com/"
     },
     {
       title: "Minimal Shopping App",

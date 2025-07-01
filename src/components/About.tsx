@@ -60,8 +60,8 @@ const AboutContent = () => {
               Software Engineer | Full Stack Developer
             </Typography>
             <Typography variant="body1" sx={{ fontStyle: 'italic' }}>
-              "Hi👋🏻! Rakshit Shinde here, aka Dev2th3Core 👨🏻‍💻. I build unique software—or at least I try to 😅. 
-              Most of my projects are slowly rusting away on my local machine 💻—but hey, what’s a developer without a graveyard🪦 of brilliant unfinished ideas?😊"
+              "Hi👋🏻! Rakshit Shinde here, aka Dev2th3Core 👨🏻‍💻. I build unique software or at least I try to 😅. 
+              Most of my projects are slowly rusting away on my local machine 💻 but hey, what’s a developer without a graveyard🪦 of brilliant unfinished ideas?😊"
             </Typography>
           </Box>
         </Box>
