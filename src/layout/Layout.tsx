@@ -4,6 +4,7 @@ import Sidebar from "../components/Sidebar";
 import Home from "../components/Home";
 import JDAnalysisButton from "../components/JDAnalysis/JDAnalysisButton";
 import { TabProvider } from "../context/TabContext";
+import GridBackground from "../components/GridBackground";
 
 function Layout() {
   const theme = useTheme();
@@ -93,7 +94,9 @@ function Layout() {
         <CssBaseline />
         <Box sx={{ display: "flex", width: '100vw'}}>
           <Sidebar showSidebar={showSidebar} handleTogglePage={handleTogglePage}/>
-          <Home showSidebar={showSidebar} toggleDarkTheme={toggleDarkTheme} handleTogglePage={handleTogglePage} />
+          <GridBackground>
+            <Home showSidebar={showSidebar} toggleDarkTheme={toggleDarkTheme} handleTogglePage={handleTogglePage} />
+          </GridBackground>
           <JDAnalysisButton />
         </Box>
       </TabProvider>
