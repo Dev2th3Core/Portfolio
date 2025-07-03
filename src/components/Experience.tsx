@@ -271,8 +271,19 @@ const TechStack = ({ techstack }: TechStackTab) => {
           <Box>
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
               {category.technologies.map((tech, i) => (
-                <Box key={i} className="skill-item" sx={{ p: "0.3rem 0.5rem"}}>
-                  {React.createElement(tech.icon, { className: "skill-icon" })}
+                <Box
+                  className="skill-item"
+                  key={i}
+                  sx={{
+                    border: theme => `1px solid ${theme.palette.divider}`,
+                    backgroundColor: theme => theme.palette.action.hover,
+                    color: theme => theme.palette.text.primary,
+                    '&:hover': {
+                      backgroundColor: theme => theme.palette.action.selected,
+                    },
+                  }}
+                >
+                  {React.createElement(tech.icon, { className: 'skill-icon' })}
                   <span>{tech.name}</span>
                 </Box>
               ))}
