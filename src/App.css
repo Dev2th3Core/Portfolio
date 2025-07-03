@@ -70,7 +70,6 @@ html, body {
   transform: translate(-50%, -50%);
   transition: opacity 0.2s ease;
   opacity: 0;
-  z-index: 1;
 }
 
 .grid-background:hover::before {
