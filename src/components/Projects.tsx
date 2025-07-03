@@ -173,10 +173,21 @@ const ProjectsContent = () => {
                 <Box>
                   <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
                     {project.technologies.map((tech, techIndex) => (
-                      <div key={techIndex} className="skill-item">
-                        {React.createElement(tech.icon, { className: "skill-icon" })}
+                      <Box
+                        className="skill-item"
+                        key={techIndex}
+                        sx={{
+                          border: theme => `1px solid ${theme.palette.divider}`,
+                          backgroundColor: theme => theme.palette.action.hover,
+                          color: theme => theme.palette.text.primary,
+                          '&:hover': {
+                            backgroundColor: theme => theme.palette.action.selected,
+                          },
+                        }}
+                      >
+                        {React.createElement(tech.icon, { className: 'skill-icon' })}
                         <span>{tech.name}</span>
-                      </div>
+                      </Box>
                     ))}
                   </div>
                 </Box>

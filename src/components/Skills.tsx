@@ -72,25 +72,22 @@ const SkillsList = ({ skills }: { skills: Skill[] }) => {
   return (
     <div className="skills-list">
       {skills.map(({ Icon, name }, index) => (
-        <div
+        <Box
           key={index}
           className="skill-item"
-          style={{ 
+          sx={{
             border: `1px solid ${theme.palette.divider}`,
             backgroundColor: theme.palette.action.hover,
             color: theme.palette.text.primary,
+            '&:hover': {
+              backgroundColor: theme.palette.action.selected,
+            },
           }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.backgroundColor = theme.palette.background.paper)
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.backgroundColor = theme.palette.action.hover)
-          }
         >
-          <Icon className="skill-icon" aria-label={name} />
+          <Icon className="skill-icon" />
           <span>{name}</span>
-        </div>
+        </Box>
       ))}
     </div>
-  )
+  );
 }
