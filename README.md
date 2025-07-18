@@ -14,13 +14,13 @@ A modern, responsive portfolio website built with React, TypeScript, and Materia
 
 ## 🤖 AI Integration
 
-The portfolio now features two powerful AI-driven tools, supported by a custom Netlify Function project called [NetliFunk](https://github.com/Rakshit4045/NetliFunk):
+The portfolio now features two powerful AI-driven tools, supported by a custom Netlify Function project called [NetliFunk](https://github.com/Dev2th3Core/NetliFunk):
 
 - **AI Job Description Analyzer**: Recruiters can upload or paste a Job Description for any role and instantly analyze how well my portfolio profile matches the requirements. This tool provides insights into skills alignment and suitability for the position.
 
 - **AI Assistant Chatbot**: Each section of the portfolio includes an AI-powered assistant. Visitors can ask any question not directly answered in the portfolio, and the chatbot will provide detailed, contextual responses. This feature is powered by Google's Gemini AI API, ensuring accurate and relevant answers about my experience, projects, skills, and more.
 
-All AI response generation is handled by the [NetliFunk](https://github.com/Rakshit4045/NetliFunk) Netlify Function project, which securely manages requests and integrates with Gemini AI.
+All AI response generation is handled by the [NetliFunk](https://github.com/Dev2th3Core/NetliFunk) Netlify Function project, which securely manages requests and integrates with Gemini AI.
 
 These AI features enhance interactivity and provide recruiters and visitors with deeper, personalized insights into my professional background.
 
@@ -37,7 +37,7 @@ These AI features enhance interactivity and provide recruiters and visitors with
 
 1. Clone the repository
 ```bash
-git clone https://github.com/Rakshit4045/Portfolio.git
+git clone https://github.com/Dev2th3Core/Portfolio.git
 ```
 
 2. Create a `.env` file in the project root with the following variable:
@@ -63,7 +63,7 @@ npm run build
 
 ## 🌐 Deployment
 
-To utilize AI features through  [NetliFunk](https://github.com/Rakshit4045/NetliFunk), create a repository secret in GitHub with the name `VITE_API_BASE_URL` and set its value to your NetliFunk deployment URL.
+To utilize AI features through  [NetliFunk](https://github.com/Dev2th3Core/NetliFunk), create a repository secret in GitHub with the name `VITE_API_BASE_URL` and set its value to your NetliFunk deployment URL.
 
 The site is deployed using GitHub Pages. To deploy:
 ```bash
@@ -101,6 +101,6 @@ This project is open for contributions.
 
 ## 👤 Contact
 
-- GitHub: [@Rakshit4045](https://github.com/Rakshit4045)
+- GitHub: [@Dev2th3Core](https://github.com/Dev2th3Core)
 - LinkedIn: [Rakshit Shinde](https://www.linkedin.com/in/rakshit-shinde/)
 - X: [@Dev2th3Core](https://x.com/Dev2th3Core)

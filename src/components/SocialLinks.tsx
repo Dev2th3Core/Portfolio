@@ -27,7 +27,7 @@ const defaultLinks: SocialLink[] = [
   {
     name: "GitHub",
     icon: <GitHub />,
-    url: "https://github.com/Rakshit4045",
+    url: "https://github.com/Dev2th3Core",
     color: "#333"
   },
   {

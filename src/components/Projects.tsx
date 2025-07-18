@@ -44,7 +44,7 @@ const ProjectsContent = () => {
         { name: "Socket Programming", icon: GrConnect },
         { name: "Encryption", icon: MdNoEncryptionGmailerrorred }
       ],
-      githubLink: "https://github.com/Rakshit4045/Socket-Programming",
+      githubLink: "https://github.com/Dev2th3Core/Socket-Programming",
       liveLink: ""
     },
     {
@@ -55,8 +55,8 @@ const ProjectsContent = () => {
         { name: "TypeScript", icon: SiTypescript },
         { name: "Material-UI", icon: SiMui }
       ],
-      githubLink: "https://github.com/Rakshit4045/Portfolio",
-      liveLink: "https://rakshit4045.github.io/Portfolio/"
+      githubLink: "https://github.com/Dev2th3Core/Portfolio",
+      liveLink: "https://dev2th3core.site"
     },
     {
       title: "NetliFunk",
@@ -67,7 +67,7 @@ const ProjectsContent = () => {
         { name: "Netlify Functions", icon: SiNetlify },
         { name: "TypeScript", icon: SiTypescript },
       ],
-      githubLink: "https://github.com/Rakshit4045/NetliFunk"
+      githubLink: "https://github.com/Dev2th3Core/NetliFunk"
     },
     {
       title: "Tic-Tac-Toe Infinity",
@@ -79,7 +79,7 @@ const ProjectsContent = () => {
         { name: "Socket.io", icon: SiSocketdotio },
         { name: "Tailwind CSS", icon: SiTailwindcss }
       ],
-      githubLink: "https://github.com/Rakshit4045/tic-tac-toe-infinity",
+      githubLink: "https://github.com/Dev2th3Core/tic-tac-toe-infinity",
       liveLink: "https://tic-tac-toe-infinity.onrender.com/"
     },
     {
@@ -91,7 +91,7 @@ const ProjectsContent = () => {
         { name: "JavaScript", icon: SiJavascript },
         { name: "CSS3", icon: SiCss3 }
       ],
-      githubLink: "https://github.com/Rakshit4045/React-Redux-Shopping-Website",
+      githubLink: "https://github.com/Dev2th3Core/React-Redux-Shopping-Website",
       liveLink: "https://earnest-unicorn-afcf9e.netlify.app/"
     }
   ];
