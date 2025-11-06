@@ -77,7 +77,7 @@ const AboutContent = () => {
           {/* Years of Experience */}
           <Paper elevation={4} sx={{ p: 2, textAlign: 'center', backgroundImage: 'var(--Paper-overlay)' }}>
             <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 1 }}>
-              2+
+              3+
             </Typography>
             <Typography variant="subtitle1" color="text.secondary">
               Years of Experience
